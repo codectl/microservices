@@ -17,10 +17,12 @@ spec:
         app: pgadmin
     spec:
       containers:
-      - image: dpage/pgadmin4:latest
+      - image: $(REGISTRY_BASE)/pgadmin4:latest
         imagePullPolicy: Always
         name: pgadmin
         envFrom:
+          - configMapRef:
+              name: common-configmap
           - configMapRef:
               name: pgadmin-configmap
         ports:

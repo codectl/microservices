@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: common-configmap
+  namespace: hpc-services
+data:
+  # empty value defaults to docker registry
+  REGISTRY_URL:
+  REGISTRY_REPOSITORY:
