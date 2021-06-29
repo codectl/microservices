@@ -20,9 +20,9 @@ spec:
       - image: dpage/pgadmin4:latest
         imagePullPolicy: Always
         name: pgadmin
-          envFrom:
-            - secretRef:
-                name: pgadmin-secret
+        envFrom:
+          - secretRef:
+              name: pgadmin-secret
         ports:
         - containerPort: 80
           name: http
