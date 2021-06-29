@@ -11,7 +11,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 5100
+    targetPort: 80
   selector:
     app: pgadmin
   type: LoadBalancer
