@@ -34,3 +34,4 @@ spec:
           requests:
             cpu: 1
             memory: 516Mi
+      serviceAccount: sa-pgadmin
