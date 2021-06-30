@@ -34,6 +34,7 @@ spec:
           requests:
             cpu: 1
             memory: 516Mi
+      restartPolicy: Always
       securityContext:
         runAsUser: 1000
         runAsGroup: 2000
