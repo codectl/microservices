@@ -17,7 +17,7 @@ spec:
         app: pgadmin
     spec:
       containers:
-      - image: "${REGISTRY_BASE}/pgadmin4:latest"
+      - image: "${DOCKER_REPO}/pgadmin4:latest"
         imagePullPolicy: Always
         name: pgadmin
         envFrom:

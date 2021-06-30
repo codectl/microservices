@@ -5,7 +5,7 @@ metadata:
   name: pgadmin-configmap
   namespace: hpc-services
 data:
-  REGISTRY_BASE: dpage
+  DOCKER_REPO: dpage
   PGADMIN_DEFAULT_EMAIL: admin
   PGADMIN_DEFAULT_PASSWORD: admin
   PGADMIN_PORT: "80"
