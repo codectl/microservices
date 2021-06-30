@@ -22,8 +22,6 @@ spec:
         name: pgadmin
         envFrom:
           - configMapRef:
-              name: common-configmap
-          - configMapRef:
               name: pgadmin-configmap
         ports:
         - containerPort: 80
