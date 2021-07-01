@@ -36,5 +36,5 @@ spec:
             memory: 516Mi
       restartPolicy: Always
       securityContext:
-        runAsUser: pgadmin
-        runAsGroup: pgadmin
+        runAsUser: 5050
+        runAsGroup: 5050
