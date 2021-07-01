@@ -21,6 +21,8 @@ spec:
         imagePullPolicy: Always
         name: pgadmin
         envFrom:
+          - secretRef:
+              name: proxy-secret
           - configMapRef:
               name: pgadmin-configmap
         ports:
