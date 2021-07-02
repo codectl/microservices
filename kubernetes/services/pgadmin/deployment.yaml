@@ -41,4 +41,4 @@ spec:
       securityContext:
         runAsUser: 5050
         runAsGroup: 5050
-        allowPriviligeEscalation: true
+        allowPrivilegeEscalation: true
