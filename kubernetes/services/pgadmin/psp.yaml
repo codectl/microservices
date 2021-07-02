@@ -11,12 +11,12 @@ spec:
   # Required to prevent escalations to root.
   allowPrivilegeEscalation: true
   allowedCapabilities:
-  - ALL
+    - ALL
   volumes:
-  - configMap
-  - secret
-  # Assume that persistentVolumes set up by the cluster admin are safe to use.
-  - persistentVolumeClaim
+    - configMap
+    - secret
+    # Assume that persistentVolumes set up by the cluster admin are safe to use.
+    - persistentVolumeClaim
   hostNetwork: false
   hostIPC: false
   hostPID: false
