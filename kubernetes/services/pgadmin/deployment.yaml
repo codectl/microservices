@@ -37,7 +37,7 @@ spec:
             cpu: 1
             memory: 516Mi
       restartPolicy: Always
-
+      serviceAccountName: sa-pgadmin
       securityContext:
         runAsUser: 5050
         runAsGroup: 5050
