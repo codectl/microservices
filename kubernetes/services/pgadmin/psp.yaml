@@ -11,7 +11,7 @@ spec:
   # Required to prevent escalations to root.
   allowPrivilegeEscalation: true
   allowedCapabilities:
-  - ALL
+    - ALL
  volumes:
     - configMap
     - secret
