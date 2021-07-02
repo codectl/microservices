@@ -39,5 +39,6 @@ spec:
       restartPolicy: Always
       serviceAccountName: sa-pgadmin
       securityContext:
+        allowPriviligeEscalation: true
         runAsUser: 5050
         runAsGroup: 5050
