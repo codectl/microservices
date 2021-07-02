@@ -13,28 +13,28 @@ spec:
   allowedCapabilities:
   - ALL
  volumes:
-    - 'configMap'
-    - 'secret'
+    - configMap
+    - secret
     # Assume that persistentVolumes set up by the cluster admin are safe to use.
-    - 'persistentVolumeClaim'
+    - persistentVolumeClaim
 hostNetwork: false
   hostIPC: false
   hostPID: false
   runAsUser:
     # Require the container to run without root privileges.
-    rule: 'RunAsAny'
+    rule: RunAsAny
     ranges:
       - min: 0
         max: 65535
   seLinux:
-    rule: 'RunAsAny'
+    rule: RunAsAny
   supplementalGroups:
-    rule: 'MustRunAs'
+    rule: MustRunAs
     ranges:
       - min: 0
         max: 65535
   fsGroup:
-    rule: 'MustRunAs'
+    rule: MustRunAs
     ranges:
       - min: 0
         max: 65535
