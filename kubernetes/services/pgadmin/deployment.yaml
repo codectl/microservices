@@ -17,7 +17,7 @@ spec:
         app: pgadmin
     spec:
       containers:
-      - image: ${DOCKER_REPO}/pgadmin4:latest
+      - image: dpage/pgadmin4:latest
         imagePullPolicy: Always
         name: pgadmin
         envFrom:
@@ -37,6 +37,7 @@ spec:
             cpu: 1
             memory: 516Mi
       restartPolicy: Always
+
       securityContext:
         runAsUser: 5050
         runAsGroup: 5050
