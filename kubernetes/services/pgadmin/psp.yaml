@@ -2,45 +2,44 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: hpc-services
+  name: baseline-pcp
   annotations:
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'runtime/default'
+    kubernetes.io/description: 'unrestricted psp for certain pods'
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
 spec:
-  privileged: true
-  # Required to prevent escalations to root.
-  allowPrivilegeEscalation: true
-  allowedCapabilities:
-    - ALL
-  volumes:
+  privileged: false      # prevent creation of privileged Pods
+
+  allowPrivilegeEscalation: true  # do not break setuid binaries (like sudo)
+
+  allowedCapabilities: ['*']
+
+  hostNetwork: false    # disallow host networking
+  hostIPC: false        # disallow sharing the IPC hostname
+  hostPID: false        # disallow sharing the host process ID namespace
+
+  seLinux:              # harness for SELinux
+    rule: RunAsAny
+
+  runAsUser:            # require the container to run without root privileges
+    rule: MustRunAsNonRoot
+  runAsGroup:           # forbid adding the root group
+    ranges:
+      - min: 1000
+        max: 65535
+    rule: MustRunAs
+  supplementalGroups:   # forbid adding the root group
+    rule: MustRunAs
+    ranges:
+      - min: 1000
+        max: 65535
+  fsGroup:              # forbid adding the root group
+    rule: MustRunAs
+    ranges:
+      - min: 1000
+        max: 65535
+  volumes:              # allow only these volume types
     - configMap
     - secret
-    # Assume that persistentVolumes set up by the cluster admin are safe to use.
     - persistentVolumeClaim
-  hostNetwork: false
-  hostIPC: false
-  hostPID: false
-  runAsUser:
-    # Require the container to run without root privileges.
-    rule: RunAsAny
-    ranges:
-      - min: 0
-        max: 65535
-  seLinux:
-    rule: RunAsAny
-  supplementalGroups:
-    rule: MustRunAs
-    ranges:
-      - min: 0
-        max: 65535
-  fsGroup:
-    rule: MustRunAs
-    ranges:
-      - min: 0
-        max: 65535
-  runAsGroup:
-    ranges:
-    - max: 65535
-      min: 500
-    rule: MustRunAs
   readOnlyRootFilesystem: false
