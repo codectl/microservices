@@ -40,5 +40,8 @@ spec:
           runAsUser: 5050
           runAsGroup: 5050
           allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - NET_BIND_SERVICE
       serviceAccountName: sa-pgadmin
       restartPolicy: Always

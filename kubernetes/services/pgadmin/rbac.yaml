@@ -2,23 +2,19 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: role-psp-custom-hpc-services-dev
-  namespace: hpc-services-dev
+  name: role-psp-custom-hpc-services
+  namespace: hpc-services
 rules:
-- apiGroups:
-  - policy
-  resourceNames:
-  - hpc-services-dev
-  resources:
-  - podsecuritypolicies
-  verbs:
-  - use
+  - apiGroups: [policy]
+    resourceNames: [hpc-services]
+    resources: [podsecuritypolicies]
+    verbs: [use]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: rolebinding-psp-custom-hpc-services-dev
-  namespace: hpc-services-dev
+  namespace: hpc-services
   annotations:
     kubernetes.io/description: 'Allow service account coredns to use psp-custom-coredns in kube-system namespace.'
 roleRef:
@@ -27,5 +23,5 @@ roleRef:
   name: role-psp-custom-hpc-services-dev
 subjects:
   - kind: ServiceAccount
-    name: pgadmin
-    namespace: hpc-services-dev
+    name: sa-pgadmin
+    namespace: hpc-services
