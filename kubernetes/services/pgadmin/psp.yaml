@@ -4,7 +4,7 @@ kind: PodSecurityPolicy
 metadata:
   name: baseline-pcp
   annotations:
-    kubernetes.io/description: 'unrestricted psp for certain pods'
+    kubernetes.io/description: 'baseline psp for containers with special requests'
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
     seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
 spec:
