@@ -6,13 +6,13 @@ metadata:
   annotations:
     kubernetes.io/description: 'baseline psp for containers with special requests'
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'docker/default'
 spec:
-  privileged: false      # prevent creation of privileged Pods
+  privileged: false # prevent creation of privileged Pods
 
-  allowPrivilegeEscalation: true    # do not break setuid binaries (like sudo)
+  allowPrivilegeEscalation: true # do not break setuid binaries (like sudo)
 
-  allowedCapabilities:              # capabilities that container is allowed to request
+  allowedCapabilities: # capabilities that container is allowed to request
     - CHOWN
     - DAC_OVERRIDE
     - FSETID
@@ -26,34 +26,34 @@ spec:
     - SYS_CHROOT
     - KILL
     - AUDIT_WRITE
-  requiredDropCapabilities: []      # disable capabilities by default
-  defaultAddCapabilities: []        # no capabilities are added by default
+  requiredDropCapabilities: [ ]      # disable capabilities by default
+  defaultAddCapabilities: [ ]        # no capabilities are added by default
 
   hostNetwork: false    # disallow host networking
   hostIPC: false        # disallow sharing the IPC hostname
   hostPID: false        # disallow sharing the host process ID namespace
 
-  seLinux:              # harness for SELinux
+  seLinux: # harness for SELinux
     rule: RunAsAny
 
-  runAsUser:            # require the container to run without root privileges
+  runAsUser: # require the container to run without root privileges
     rule: MustRunAsNonRoot
-  runAsGroup:           # forbid adding the root group
+  runAsGroup: # forbid adding the root group
     ranges:
       - min: 1000
         max: 65535
     rule: MustRunAs
-  supplementalGroups:   # forbid adding the root group
+  supplementalGroups: # forbid adding the root group
     rule: MustRunAs
     ranges:
       - min: 1000
         max: 65535
-  fsGroup:              # forbid adding the root group
+  fsGroup: # forbid adding the root group
     rule: MustRunAs
     ranges:
       - min: 1000
         max: 65535
-  volumes:              # allow only these volume types
+  volumes: # allow only these volume types
     - configMap
     - secret
     - persistentVolumeClaim
