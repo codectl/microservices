@@ -16,11 +16,6 @@ spec:
     storageClassName: standard
     volumeMount: /var/lib/postgresql/data
 
-  backup:
-    schedule: "* */1 * * *"
-    storageClassName: standard
-    volumeMount: /var/lib/postgresql/backup
-
   envFrom:
     - secretRef:
         name: postgres-secret
