@@ -9,25 +9,18 @@ spec:
 
   replicas: 3
   image: postgres:latest
+  port: 5432
 
-  template:
-    metadata:
-      labels:
-        app: postgres
-    spec:
-      containers:
-        - name: postgres
-          image: postgres:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5432
-          envFrom:
-            - secretRef:
-                name: postgres-secret
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgresdb
-      volumes:
-        - name: postgresdb
-          persistentVolumeClaim:
-            claimName: postgres-pv-claim
+  database:
+    size: 200Mi
+    storageClassName: standard
+    volumeMount: /var/lib/postgresql/data
+
+  backup:
+    schedule: "* */1 * * *"
+    storageClassName: standard
+    volumeMount: /var/lib/postgresql/backup
+
+  envFrom:
+    - secretRef:
+        name: postgres-secret
