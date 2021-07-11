@@ -16,6 +16,8 @@ spec:
     storageClassName: standard
     volumeMount: /var/lib/postgresql/data
 
+  serviceAccountName: sa-postgres
+
   envFrom:
     - secretRef:
-        name: postgres-secret
+        name: postgres-secre
