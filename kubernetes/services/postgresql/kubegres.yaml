@@ -1,10 +1,15 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: kubegres.reactive-tech.io/v1
+kind: Kubegres
 metadata:
   name: postgres
+  namespace: hpc-services
+
 spec:
-  replicas: 1
+
+  replicas: 3
+  image: postgres:latest
+
   template:
     metadata:
       labels:
