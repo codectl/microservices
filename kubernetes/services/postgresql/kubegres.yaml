@@ -20,4 +20,4 @@ spec:
 
   envFrom:
     - secretRef:
-        name: postgres-secre
+        name: postgres-secret
