@@ -16,6 +16,15 @@ spec:
     storageClassName: standard
     volumeMount: /var/lib/postgresql/data
 
-  envFrom:
-    - secretRef:
-        name: postgres-secret
+  env:
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: postgres-secret
+          key: postgres-password
+
+    - name: POSTGRES_REPLICATION_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: postgres-secret
+          key: postgres-replication-password
