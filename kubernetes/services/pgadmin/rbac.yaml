@@ -21,6 +21,5 @@ roleRef:
   name: hpc-services-baseline-role
 subjects:
   - kind: ServiceAccount
-    apiGroup: rbac.authorization.k8s.io
     name: sa-pgadmin
     namespace: hpc-services
