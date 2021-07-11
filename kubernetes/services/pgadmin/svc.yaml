@@ -14,4 +14,4 @@ spec:
     targetPort: 80
   selector:
     app: pgadmin
-  type: LoadBalancer
+  type: NodePort
