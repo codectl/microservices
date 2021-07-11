@@ -17,12 +17,14 @@ spec:
     volumeMount: /var/lib/postgresql/data
 
   env:
+    # password for superuser 'postgres'
     - name: POSTGRES_PASSWORD
       valueFrom:
         secretKeyRef:
           name: postgres-secret
           key: POSTGRES_PASSWORD
 
+    # password for user 'replication'
     - name: POSTGRES_REPLICATION_PASSWORD
       valueFrom:
         secretKeyRef:
