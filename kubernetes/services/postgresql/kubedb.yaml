@@ -11,7 +11,7 @@ spec:
   replicas: 3
 
   standbyMode: Hot # enable load balancing
-  streamingMode: Asynchronous
+  streamingMode: Asynchronous # only supported mode
 
   # pvc parameters
   storageType: Durable
