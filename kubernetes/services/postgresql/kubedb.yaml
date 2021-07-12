@@ -7,7 +7,7 @@ metadata:
 
 spec:
 
-  version: 13.2
+  version: "13.2"
   replicas: 3
 
   standbyMode: Hot # enable load balancing
@@ -33,7 +33,7 @@ spec:
   podTemplate:
     metadata:
       annotations: # pod's annotations
-        version: 13.2
+        version: "13.2"
         a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
     controller:
       annotations:
