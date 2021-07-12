@@ -2,7 +2,7 @@
 apiVersion: catalog.kubedb.com/v1alpha1
 kind: PostgresVersion
 metadata:
-  name: "13.3"
+  name: "13.2"
   labels:
     app: kubedb
 spec:
