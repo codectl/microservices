@@ -39,7 +39,6 @@ spec:
       annotations:
         a8r.io/documentation: "https://kubedb.com/docs/v2021.06.23/guides/postgres"
     spec:
-      serviceAccountName: sa-postgres
       resources:
         requests:
           memory: 64Mi
