@@ -33,10 +33,10 @@ spec:
   podTemplate:
     metadata:
       annotations: # pod's annotations
-        passMe: ToDatabasePod
+        version: 13.2
     controller:
       annotations: # statefulSet's annotations
-        passMe: ToStatefulSet
+        version: 13.2
     spec:
       serviceAccountName: sa-postgres
       resources:
