@@ -15,7 +15,7 @@ spec:
 
   # 'postgres' db credentials
   authSecret:
-    name: p1-auth
+    name: pgauth-secret
 
   # pvc parameters
   storageType: Durable
@@ -34,9 +34,6 @@ spec:
     metadata:
       annotations: # pod's annotations
         version: 13.2
-    controller:
-      annotations: # statefulSet's annotations
-        version: 13.2
     spec:
       serviceAccountName: sa-postgres
       resources:
@@ -49,18 +46,12 @@ spec:
 
   serviceTemplates:
     - alias: primary
-      metadata:
-        annotations:
-          version: 13.2
       spec:
         type: NodePort
         ports:
           - name: http
             port: 5432
     - alias: standby
-      metadata:
-        annotations:
-          version: 13.2
       spec:
         type: NodePort
         ports:
