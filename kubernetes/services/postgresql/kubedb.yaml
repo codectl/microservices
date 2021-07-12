@@ -34,6 +34,9 @@ spec:
     metadata:
       annotations: # pod's annotations
         version: 13.2
+      controller:
+        annotations:
+          passMe: ToStatefulSet
     spec:
       serviceAccountName: sa-postgres
       resources:
@@ -57,3 +60,6 @@ spec:
         ports:
           - name: http
             port: 5432
+
+  # prevent db deletion if crd is deleted
+  terminationPolicy: DoNotTerminate
