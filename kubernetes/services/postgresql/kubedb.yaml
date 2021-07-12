@@ -13,6 +13,10 @@ spec:
   standbyMode: Hot # enable load balancing
   streamingMode: Asynchronous # only supported mode
 
+  # 'postgres' db credentials
+  authSecret:
+    name: p1-auth
+
   # pvc parameters
   storageType: Durable
   storage:
@@ -25,3 +29,20 @@ spec:
   # enable builtin prometheus monitoring
   monitor:
     agent: prometheus.io/builtin
+
+  podTemplate:
+    metadata:
+      annotations: # pod's annotations
+        passMe: ToDatabasePod
+    controller:
+      annotations: # statefulSet's annotations
+        passMe: ToStatefulSet
+    spec:
+      serviceAccountName: sa-postgres
+      resources:
+        requests:
+          memory: 64Mi
+          cpu: 250m
+        limits:
+          memory: 128Mi
+          cpu: 500m
