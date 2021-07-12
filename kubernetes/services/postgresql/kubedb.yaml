@@ -46,3 +46,23 @@ spec:
         limits:
           memory: 128Mi
           cpu: 500m
+
+  serviceTemplates:
+    - alias: primary
+      metadata:
+        annotations:
+          version: 13.2
+      spec:
+        type: NodePort
+        ports:
+          - name: http
+            port: 5432
+    - alias: standby
+      metadata:
+        annotations:
+          version: 13.2
+      spec:
+        type: NodePort
+        ports:
+          - name: http
+            port: 5432
