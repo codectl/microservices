@@ -18,7 +18,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: hpc-services-baseline-role
+  name: hpc-services-privileged-role
 subjects:
   - kind: ServiceAccount
     name: sa-pgadmin
