@@ -1,1 +1,27 @@
 ---
+apiVersion: kubedb.com/v1alpha2
+kind: Postgres
+metadata:
+  name: ha-postgres
+  namespace: hpc-services
+
+spec:
+
+  version: 13.2
+  replicas: 3
+
+  standbyMode: Hot # enable load balancing
+  streamingMode: Asynchronous
+
+  # pvc parameters
+  storageType: Durable
+  storage:
+    storageClassName: standard
+    accessModes: [ ReadWriteOnce ]
+    resources:
+      requests:
+        storage: 1Gi
+
+  # enable builtin prometheus monitoring
+  monitor:
+    agent: prometheus.io/builtin
