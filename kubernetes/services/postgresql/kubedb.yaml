@@ -34,9 +34,10 @@ spec:
     metadata:
       annotations: # pod's annotations
         version: 13.2
-      controller:
-        annotations:
-          passMe: ToStatefulSet
+        a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
+    controller:
+      annotations:
+        a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
     spec:
       serviceAccountName: sa-postgres
       resources:
@@ -49,12 +50,18 @@ spec:
 
   serviceTemplates:
     - alias: primary
+      metadata:
+        annotations:
+          a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
       spec:
         type: NodePort
         ports:
           - name: http
             port: 5432
     - alias: standby
+      metadata:
+        annotations:
+          a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
       spec:
         type: NodePort
         ports:
