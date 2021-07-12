@@ -49,24 +49,23 @@ spec:
           cpu: 500m
 
   serviceTemplate:
-    - alias: primary
-      metadata:
-        annotations:
-          a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
-      spec:
-        type: NodePort
-        ports:
-          - name: http
-            port: 5432
-    - alias: standby
-      metadata:
-        annotations:
-          a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
-      spec:
-        type: NodePort
-        ports:
-          - name: http
-            port: 5432
+    metadata:
+      annotations:
+        a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
+    spec:
+      type: NodePort
+      ports:
+        - name: http
+          port: 5432
+  replicaServiceTemplate:
+    metadata:
+      annotations:
+        a8r:io/documentation: https://kubedb.com/docs/v2021.06.23/guides/postgres
+    spec:
+      type: NodePort
+      ports:
+        - name: http
+          port: 5432
 
   # prevent db deletion if crd is deleted
   terminationPolicy: DoNotTerminate
