@@ -57,6 +57,7 @@ spec:
       ports:
         - name: http
           port: 5432
+
   replicaServiceTemplate:
     metadata:
       annotations:
