@@ -1,0 +1,15 @@
+---
+apiVersion: catalog.kubedb.com/v1alpha1
+kind: PostgresVersion
+metadata:
+  name: "13.3"
+  labels:
+    app: kubedb
+spec:
+  version: "13.2"
+  db:
+    image: "kubedb/postgres:13.2"
+  exporter:
+    image: "kubedb/postgres_exporter:v0.4.4"
+  tools:
+    image: "kubedb/postgres-tools:11.2"
