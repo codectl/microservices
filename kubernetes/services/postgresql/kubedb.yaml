@@ -68,5 +68,4 @@ spec:
           - name: http
             port: 5432
 
-  # prevent db deletion if crd is deleted
-  terminationPolicy: DoNotTerminate
+  terminationPolicy: Delete
