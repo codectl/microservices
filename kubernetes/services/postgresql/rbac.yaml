@@ -13,7 +13,18 @@ rules:
     resources: [ statefulSets ]
     resourceNames: [ ha-postgres ]
     verbs: [ get ]
-
+  - apiGroups: [ ]
+    resources: [ pods ]
+    verbs: [ get, list, patch, delete ]
+  - apiGroups: [ ]
+    resources: [ pods/exec ]
+    verbs: [ create ]
+  - apiGroups: [ ]
+    resources: [ secrets ]
+    verbs: [ get, list ]
+  - apiGroups: [ ]
+    resources: [ configmaps ]
+    verbs: [ create, get, update ]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
