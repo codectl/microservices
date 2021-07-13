@@ -23,6 +23,3 @@ subjects:
   - kind: ServiceAccount
     name: sa-pgadmin
     namespace: hpc-services
-  - kind: ServiceAccount
-    name: sa-postgres
-    namespace: hpc-services
