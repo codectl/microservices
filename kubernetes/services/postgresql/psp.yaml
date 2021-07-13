@@ -1,0 +1,47 @@
+---
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: kubedb-postgres
+  annotations:
+    kubernetes.io/description: 'psp postgres running under KubeDB'
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'docker/default'
+spec:
+  privileged: false # prevent creation of privileged Pods
+
+  allowPrivilegeEscalation: false # prevent setuid binaries (like sudo)
+
+  allowedCapabilities: # capabilities that container is allowed to request
+    - IPC_LOCK
+    - SYS_RESOURCE
+  requiredDropCapabilities: [ ]      # disable capabilities by default
+  defaultAddCapabilities: [ ]        # no capabilities are added by default
+
+  hostNetwork: false    # disallow host networking
+  hostIPC: false        # disallow sharing the IPC hostname
+  hostPID: false        # disallow sharing the host process ID namespace
+
+  seLinux: # harness for SELinux
+    rule: RunAsAny
+
+  runAsUser: # require the container to run without root privileges
+    rule: MustRunAsNonRoot
+  runAsGroup: # forbid adding the root group
+    rule: MustRunAs
+    ranges:
+      - min: 1
+        max: 65535
+  supplementalGroups: # forbid adding the root group
+    rule: MustRunAs
+    ranges:
+      - min: 1
+        max: 65535
+  fsGroup: # forbid adding the root group
+    rule: MustRunAs
+    ranges:
+      - min: 1
+        max: 65535
+  volumes: # allow only these volume types
+    - persistentVolumeClaim
+  readOnlyRootFilesystem: false
