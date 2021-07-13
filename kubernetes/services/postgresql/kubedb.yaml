@@ -13,6 +13,10 @@ spec:
   standbyMode: Hot # enable load balancing
   streamingMode: Asynchronous # only supported mode
 
+  # postgres admin credentials
+  authSecret:
+    name: pg-auth
+
   # pvc parameters
   storageType: Durable
   storage:
