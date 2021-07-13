@@ -13,10 +13,6 @@ spec:
   standbyMode: Hot # enable load balancing
   streamingMode: Asynchronous # only supported mode
 
-  # 'postgres' db credentials
-  authSecret:
-    name: pgauth-secret
-
   # pvc parameters
   storageType: Durable
   storage:
