@@ -44,4 +44,6 @@ spec:
         max: 65535
   volumes: # allow only these volume types
     - persistentVolumeClaim
+    - emptyDir
+    - secret
   readOnlyRootFilesystem: false
