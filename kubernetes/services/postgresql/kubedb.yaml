@@ -22,10 +22,6 @@ spec:
       requests:
         storage: 1Gi
 
-  # enable builtin prometheus monitoring
-  monitor:
-    agent: prometheus.io/builtin
-
   podTemplate:
     metadata:
       annotations: # pod's annotations
