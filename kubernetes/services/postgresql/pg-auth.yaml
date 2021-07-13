@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/basic-auth
+metadata:
+  name: pg-auth
+  namespace: hpc-services
+data:
+  username: ...
+  password: ...
