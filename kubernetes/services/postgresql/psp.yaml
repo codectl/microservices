@@ -4,7 +4,7 @@ kind: PodSecurityPolicy
 metadata:
   name: kubedb-postgres
   annotations:
-    kubernetes.io/description: 'psp postgres running under KubeDB'
+    kubernetes.io/description: 'psp for postgresql pod running under KubeDB operator'
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
     seccomp.security.alpha.kubernetes.io/defaultProfileName: 'docker/default'
 spec:

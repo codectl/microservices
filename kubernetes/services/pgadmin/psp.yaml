@@ -2,9 +2,9 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: baseline-pcp
+  name: pgadmin4
   annotations:
-    kubernetes.io/description: 'baseline psp for containers with special requests'
+    kubernetes.io/description: 'psp for pgadmin4 pod'
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
     seccomp.security.alpha.kubernetes.io/defaultProfileName: 'docker/default'
 spec:
@@ -12,22 +12,9 @@ spec:
 
   allowPrivilegeEscalation: true # do not break setuid binaries (like sudo)
 
-  allowedCapabilities: # capabilities that container is allowed to request
-    - CHOWN
-    - DAC_OVERRIDE
-    - FSETID
-    - FOWNER
-    - MKNOD
-    - SETGID
-    - SETUID
-    - SETFCAP
-    - SETPCAP
-    - NET_BIND_SERVICE
-    - SYS_CHROOT
-    - KILL
-    - AUDIT_WRITE
-  requiredDropCapabilities: [ ]      # disable capabilities by default
-  defaultAddCapabilities: [ ]        # no capabilities are added by default
+  allowedCapabilities: [ ]           # no additional capabilities required
+  requiredDropCapabilities: [ ]      # keep default capabilities
+  defaultAddCapabilities: [ ]        # keep default capabilities
 
   hostNetwork: false    # disallow host networking
   hostIPC: false        # disallow sharing the IPC hostname
