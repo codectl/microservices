@@ -9,6 +9,11 @@ rules:
     resources: [ podsecuritypolicies ]
     verbs: [ use ]
     resourceNames: [ postgres-db ]
+  - apiGroups: [ apps ]
+    resources: [ statefulSets ]
+    resourcesNames: [ ha-postgres ]
+    verbs: [ get ]
+
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
