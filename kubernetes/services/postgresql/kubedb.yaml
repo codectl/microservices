@@ -63,4 +63,4 @@ spec:
           - name: http
             port: 5432
 
-  terminationPolicy: Delete
+  terminationPolicy: Halt
