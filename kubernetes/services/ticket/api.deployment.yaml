@@ -39,7 +39,9 @@ spec:
             - configMapRef:
                 name: ticket-configmap
             - secretRef:
-                name: ticket-secret
+                name: ticket-secrets
+            - secretRef:
+                name: pg-ticket-auth
           resources:
             limits:
               cpu: 1
