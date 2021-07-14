@@ -18,6 +18,8 @@ spec:
     matchLabels:
       app: ticket-api
 
+  serviceAccountName: sa-ticket
+
   strategy:
     # Update each pod at a time and prevent
     # additional pods from created
