@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ticket-api
-  namespace: services
+  namespace: hpc-services
   labels:
     app: ticket-api
     framework: flask
