@@ -5,7 +5,7 @@ type: kubernetes.io/basic-auth
 metadata:
   name: pg-ticket-auth
   namespace: hpc-services
-data:
+stringData:
   POSTGRES_DB: ticketdb
   POSTGRES_USER: ...
   POSTGRES_PASSWORD: ...
