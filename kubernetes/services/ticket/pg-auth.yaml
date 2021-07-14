@@ -1,7 +1,7 @@
 ---
 apiVersion: v1
 kind: Secret
-type: kubernetes.io/basic-auth
+type: Opaque
 metadata:
   name: pg-ticket-auth
   namespace: hpc-services
@@ -9,7 +9,3 @@ stringData:
   POSTGRES_DB: ticketdb
   POSTGRES_USER: ...
   POSTGRES_PASSWORD: ...
-
-  # required field for Secret kind (use same)
-  username: ...
-  password: ...
