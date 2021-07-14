@@ -15,7 +15,7 @@ spec:
 
   # postgres admin credentials
   authSecret:
-    name: pg-auth
+    name: pg-admin-auth
 
   # pvc parameters
   storageType: Durable
