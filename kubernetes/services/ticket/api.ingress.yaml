@@ -4,8 +4,6 @@ kind: Ingress
 metadata:
   name: ticket-api
   namespace: hpc-services
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
