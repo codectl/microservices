@@ -38,8 +38,6 @@ spec:
           envFrom:
             - secretRef:
                 name: ticket-secrets
-            - secretRef:
-                name: pg-ticket-auth
             - configMapRef:
                 name: ticket-configmap
           resources:
