@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Secret
 type: Opaque
 metadata:
-  name: pg-admin-auth
+  name: ha-postgres-auth
   namespace: hpc-services
 stringData:
   POSTGRES_USER: ...
