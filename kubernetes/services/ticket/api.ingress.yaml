@@ -11,7 +11,5 @@ spec:
         paths:
           - path: /api/ticket
             backend:
-              service:
-                name: ticket-api
-                port:
-                  number: 80
+              serviceName: ticket-api
+              servicePort: 80
