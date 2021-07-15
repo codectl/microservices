@@ -36,10 +36,10 @@ spec:
           image: ticket-manager:latest
           imagePullPolicy: Always
           envFrom:
-            - secretRef:
-                name: ticket-secrets
             - configMapRef:
                 name: ticket-configmap
+            - secretRef:
+                name: ticket-secrets
           resources:
             limits:
               cpu: 1
