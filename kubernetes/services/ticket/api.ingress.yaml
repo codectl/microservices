@@ -10,7 +10,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/ticket
+          - path: /api/tickets
             backend:
               serviceName: ticket-api
               servicePort: 80
