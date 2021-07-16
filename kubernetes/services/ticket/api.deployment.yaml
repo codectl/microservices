@@ -37,7 +37,7 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: ticket-configmap
+                name: ticket-configs
             - secretRef:
                 name: ticket-secrets
           resources:
