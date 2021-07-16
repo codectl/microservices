@@ -7,11 +7,12 @@ metadata:
   name: pgadmin
   namespace: hpc-services
 spec:
+
+  selector:
+    app: pgadmin
+
   ports:
   - name: http
     port: 80
-    protocol: TCP
     targetPort: 80
-  selector:
-    app: pgadmin
-  type: NodePort
+    protocol: TCP
