@@ -13,7 +13,7 @@ data:
   APPLICATION_CONTEXT: /api/tickets/v3
 
   # version of OpenAPI
-  OPENAPI: 3:0.3
+  OPENAPI: 3.0.3
 
   # the application providing info about the ticket
   TICKET_CLIENT_APP: https://example.com/
