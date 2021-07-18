@@ -1,0 +1,72 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgadmin-nginx-conf
+data:
+  nginx.conf: |
+#    user nginx;
+#    worker_processes  1;
+#    events {
+#      worker_connections  10240;
+#    }
+    http {
+      server {
+        listen       80;
+        server_name  _;
+          location /pgadmin4/ {
+            proxy_set_header X-Script-Name /pgadmin4;
+            proxy_set_header Host $host;
+            proxy_pass http://pgadmin;
+            proxy_redirect off;
+          }
+      }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgadmin-nginx
+  namespace: hpc-services
+spec:
+  selector:
+    matchLabels:
+      run: pgadmin-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: pgadmin-nginx
+    spec:
+      containers:
+        - name: pgadmin-nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: pgadmin-nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              readOnly: true
+      volumes:
+        - name: pgadmin-nginx-conf
+          configMap:
+            name: pgadmin-nginx-conf
+            items:
+              - key: nginx.conf
+                path: nginx.conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgadmin-nginx
+  namespace: hpc-services
+  labels:
+    run: pgadmin-nginx
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    run: pgadmin-nginx

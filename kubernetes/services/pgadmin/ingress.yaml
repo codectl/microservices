@@ -4,16 +4,11 @@ kind: Ingress
 metadata:
   name: pgadmin
   namespace: hpc-services
-  annotations:
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      proxy_set_header X-Script-Name /pgadmin4;
-      proxy_set_header Host $host;
 spec:
   rules:
     - http:
         paths:
           - path: /pgadmin
-            pathType: Prefix
             backend:
               serviceName: pgadmin
               servicePort: 80
