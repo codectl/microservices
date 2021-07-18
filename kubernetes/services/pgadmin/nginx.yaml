@@ -1,5 +1,25 @@
 ---
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-pgadmin-nginx
+  namespace: hpc-services
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sa-ticket-role-binding
+  namespace: hpc-services
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: privileged-psp
+subjects:
+  - kind: ServiceAccount
+    name: sa-pgadmin-nginx
+    namespace: hpc-services
+---
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pgadmin-nginx-conf
