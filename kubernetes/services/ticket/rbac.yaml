@@ -1,13 +1,24 @@
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sa-ticket-role
+  namespace: hpc-services
+rules:
+  - apiGroups: [ policy ]
+    resources: [ podsecuritypolicies ]
+    verbs: [ use ]
+    resourceNames: [ privileged ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: sa-ticket-role-binding
   namespace: hpc-services
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: privileged-psp
+  kind: Role
+  name: sa-ticket-role
 subjects:
   - kind: ServiceAccount
     name: sa-ticket
