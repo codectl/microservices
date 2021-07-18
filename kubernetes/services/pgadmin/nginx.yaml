@@ -6,14 +6,25 @@ metadata:
   namespace: hpc-services
 ---
 apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sa-pgadmin-nginx-role
+  namespace: hpc-services
+rules:
+  - apiGroups: [ policy ]
+    resources: [ podsecuritypolicies ]
+    verbs: [ use ]
+    resourceNames: [ privileged ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: sa-ticket-role-binding
+  name: sa-pgadmin-nginx-role-binding
   namespace: hpc-services
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: privileged-psp
+  kind: Role
+  name: sa-pgadmin-nginx-role
 subjects:
   - kind: ServiceAccount
     name: sa-pgadmin-nginx
@@ -69,6 +80,7 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
               readOnly: true
+      serviceAccountName: sa-pgadmin-nginx
       volumes:
         - name: pgadmin-nginx-conf
           configMap:
