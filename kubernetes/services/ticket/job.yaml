@@ -29,9 +29,11 @@ spec:
                 name: ticket-configmap
           resources:
             limits:
-              cpu: 1
-              memory: 1Gi
+              cpu: 100m
+              memory: 100Mi
             requests:
-              cpu: 1
-              memory: 516Mi
+              cpu: 100m
+              memory: 100Mi
       restartPolicy: Always
+      parallelism: 1 # default value
+      completions: 1 # default value
