@@ -3,7 +3,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: ticket-job
-  namespace: services
+  namespace: hpc-services
   labels:
     app: ticket-job
     framework: flask
