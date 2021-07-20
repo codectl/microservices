@@ -32,6 +32,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: ticket-configs
+            - secretRef:
+                name: ticket-secrets
           resources:
             limits:
               cpu: 100m
