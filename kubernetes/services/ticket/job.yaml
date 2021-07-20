@@ -16,9 +16,6 @@ spec:
   completions: 1 # default value
 
   template:
-    metadata:
-      labels:
-        app: ticket-job
     spec:
       containers:
         - name: ticket-job
