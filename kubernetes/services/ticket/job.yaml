@@ -11,9 +11,6 @@ metadata:
     a8r.io/description: "Batch service for creating tickets out of mailbox events"
     a8r.io/owner: renatodamas
 spec:
-  selector:
-    matchLabels:
-      app: ticket-job
 
   parallelism: 1 # default value
   completions: 1 # default value
