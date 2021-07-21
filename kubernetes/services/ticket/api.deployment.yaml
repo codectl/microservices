@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: ticket-api
-          image: ticket-manager:latest
+          image: docker.io/rena2damas/ticket-manager:latest
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
