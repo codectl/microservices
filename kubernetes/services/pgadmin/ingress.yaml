@@ -14,5 +14,5 @@ spec:
           - path: /pgadmin4
             pathType: Prefix
             backend:
-              serviceName: pgadmin
+              serviceName: pgadmin-nginx
               servicePort: 80
