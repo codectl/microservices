@@ -7,7 +7,7 @@ Kubernetes configuration files for the ticket manager service.
 Run the following instructions in the same order to have it installed:
 
 ```bash
-$ cd kubernetes/services/postgresql
+$ cd kubernetes/services/ticket
 $ kubectl apply -f sa.yaml
 $ kubectl apply -f rbac.yaml
 $ kubectl apply -f secrets.yaml
