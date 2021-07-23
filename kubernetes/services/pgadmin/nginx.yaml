@@ -5,31 +5,6 @@ metadata:
   name: sa-pgadmin-nginx
   namespace: hpc-services
 ---
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: sa-pgadmin-nginx-role
-  namespace: hpc-services
-rules:
-  - apiGroups: [ policy ]
-    resources: [ podsecuritypolicies ]
-    verbs: [ use ]
-    resourceNames: [ privileged ]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: sa-pgadmin-nginx-role-binding
-  namespace: hpc-services
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: sa-pgadmin-nginx-role
-subjects:
-  - kind: ServiceAccount
-    name: sa-pgadmin-nginx
-    namespace: hpc-services
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -74,9 +49,9 @@ spec:
     spec:
       containers:
         - name: pgadmin-nginx
-          image: nginx:latest
+          image: nginxinc/nginx-unprivileged
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           volumeMounts:
             - name: pgadmin-nginx-conf
               mountPath: /etc/nginx/nginx.conf
