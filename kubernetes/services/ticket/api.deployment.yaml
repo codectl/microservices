@@ -40,6 +40,8 @@ spec:
                 name: ticket-configs
             - secretRef:
                 name: ticket-secrets
+            - secretRef:
+                name: registry-auth
           resources:
             limits:
               cpu: 1
