@@ -1,0 +1,25 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: sa-pgadmin-role
+  namespace: hpc-services
+rules:
+  - apiGroups: [ policy ]
+    resources: [ podsecuritypolicies ]
+    verbs: [ use ]
+    resourceNames: [ pgadmin-psp ]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sa-pgadmin-role-binding
+  namespace: hpc-services
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: sa-pgadmin-role
+subjects:
+  - kind: ServiceAccount
+    name: sa-pgadmin
+    namespace: hpc-services
