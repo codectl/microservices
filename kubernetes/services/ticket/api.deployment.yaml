@@ -31,12 +31,12 @@ spec:
       labels:
         app: ticket-api
     spec:
+      imagePullSecrets:
+        - name: registry-auth
       containers:
         - name: ticket-api
           image: docker.io/rena2damas/ticket-manager:latest
           imagePullPolicy: Always
-          imagePullSecrets:
-            - name: registry-auth
           envFrom:
             - configMapRef:
                 name: ticket-configs

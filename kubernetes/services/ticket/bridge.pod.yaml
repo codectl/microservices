@@ -11,12 +11,12 @@ metadata:
     a8r.io/description: "Batch service for creating tickets out of mailbox events"
     a8r.io/owner: renatodamas
 spec:
+  imagePullSecrets:
+    - name: registry-auth
   containers:
     - name: ticket-job
       image: docker.io/rena2damas/ticket-manager:latest
       imagePullPolicy: Always
-      imagePullSecrets:
-        - name: registry-auth
       command: [ "flask", "o365", "handle-incoming-email" ]
       envFrom:
         - configMapRef:
