@@ -35,6 +35,8 @@ spec:
         - name: ticket-api
           image: docker.io/rena2damas/ticket-manager:latest
           imagePullPolicy: Always
+          imagePullSecrets:
+            - name: registry-auth
           envFrom:
             - configMapRef:
                 name: ticket-configs

@@ -15,14 +15,14 @@ spec:
     - name: ticket-job
       image: docker.io/rena2damas/ticket-manager:latest
       imagePullPolicy: Always
+      imagePullSecrets:
+        - name: registry-auth
       command: [ "flask", "o365", "handle-incoming-email" ]
       envFrom:
         - configMapRef:
             name: ticket-configs
         - secretRef:
             name: ticket-secrets
-        - secretRef:
-            name: registry-auth
       resources:
         limits:
           cpu: 100m
