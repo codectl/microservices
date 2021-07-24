@@ -4,3 +4,5 @@ kind: ServiceAccount
 metadata:
   name: sa-ticket
   namespace: hpc-services
+secrets:
+  - name: registry-auth
