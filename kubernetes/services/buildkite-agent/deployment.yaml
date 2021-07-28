@@ -25,7 +25,7 @@ spec:
         - name: buildkite
           image: buildkite/agent:3
           envFrom:
-            - configMapRef:
+            - secretRef:
                 name: proxy
           env:
             - name: BUILDKITE_AGENT_TOKEN
