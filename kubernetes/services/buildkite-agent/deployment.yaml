@@ -26,10 +26,10 @@ spec:
           image: buildkite/agent:3
           imagePullPolicy: IfNotPresent
           args:
-            - "start"
-            - "--name buildkite-agent-kubernetes-$HOSTNAME"
-            - "--tags env=kubernetes"
-            - "--tags agent=kaniko"
+            - start
+            - --name=buildkite-agent-kubernetes-$HOSTNAME
+            - --tags="env=kubernetes"
+            - --tags="agent=kaniko"
           envFrom:
             - secretRef:
                 name: proxy
