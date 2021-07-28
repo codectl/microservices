@@ -40,9 +40,9 @@ spec:
                   name: buildkite-agent-token
                   key: token
             - name: UUID
-                valueFrom:
-                  fieldRef:
-                    fieldPath: metadata.uid
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
           volumeMounts:
             - name: buildkite-builds
               mountPath: /buildkite/builds
