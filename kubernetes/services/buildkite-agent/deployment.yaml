@@ -27,7 +27,6 @@ spec:
           imagePullPolicy: IfNotPresent
           args:
             - start
-            - --name=buildkite-agent-kubernetes-$UUID
             - --tags="env=kubernetes"
             - --tags="agent=kaniko"
           envFrom:
