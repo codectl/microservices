@@ -25,6 +25,7 @@ spec:
         - name: buildkite
           image: buildkite/agent:3
           args:
+            - "start"
             - "--name buildkite-agent-kubernetes-$HOSTNAME"
             - "--tags env=kubernetes"
             - "--tags agent=kaniko"
