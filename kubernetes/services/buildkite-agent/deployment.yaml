@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buildkite-agent
+  namespace: hpc-services
+  labels:
+    app: buildkite-agent
+  annotations:
+    a8r.io/description: "Buildkite agent"
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: buildkite-agent
+
+  template:
+    metadata:
+      labels:
+        app: buildkite-agent
+    spec:
+      containers:
+        - name: buildkite
+          image: buildkite/agent:3
+          env:
+            - name: BUILDKITE_AGENT_TOKEN
+              valueFrom:
+                - secretKeyRef:
+                    name: buildkite-agent
+                    key: token
+          volumeMounts:
+            - name: buildkite-builds
+              mountPath: /buildkite/builds
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 1
+              memory: 516Mi
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+      serviceAccountName: sa-buildkite-agent
+      terminationGracePeriodSeconds: 900
+      volumes:
+        - name: buildkite-builds
+          emptyDir: { }
