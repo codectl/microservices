@@ -24,6 +24,7 @@ spec:
       containers:
         - name: buildkite
           image: buildkite/agent:3
+          imagePullPolicy: IfNotPresent
           args:
             - "start"
             - "--name buildkite-agent-kubernetes-$HOSTNAME"
