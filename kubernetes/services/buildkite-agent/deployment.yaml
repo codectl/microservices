@@ -27,6 +27,7 @@ spec:
           args:
             - "--name buildkite-agent-kubernetes-$HOSTNAME"
             - "--tags env=kubernetes"
+            - "--tags agent=kaniko"
           envFrom:
             - secretRef:
                 name: proxy
