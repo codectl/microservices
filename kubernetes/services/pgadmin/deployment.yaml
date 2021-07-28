@@ -22,7 +22,7 @@ spec:
         name: pgadmin
         envFrom:
           - secretRef:
-              name: proxy-secret
+              name: proxy
           - configMapRef:
               name: pgadmin-configs
         ports:
