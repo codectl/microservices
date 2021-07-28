@@ -27,9 +27,9 @@ spec:
           env:
             - name: BUILDKITE_AGENT_TOKEN
               valueFrom:
-                - secretKeyRef:
-                    name: buildkite-agent
-                    key: token
+                secretKeyRef:
+                  name: buildkite-agent
+                  key: token
           volumeMounts:
             - name: buildkite-builds
               mountPath: /buildkite/builds
