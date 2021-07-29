@@ -23,8 +23,8 @@ spec:
     spec:
       containers:
         - name: buildkite
-          image: buildkite/agent:3
-          imagePullPolicy: IfNotPresent
+          image: ${IMAGE}:${TAG}
+          imagePullPolicy: Always
           args:
             - start
             - --name=%hostname

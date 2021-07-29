@@ -15,7 +15,7 @@ spec:
     - name: registry-auth
   containers:
     - name: ticket-job
-      image: docker.io/rena2damas/ticket-manager:latest
+      image: ${IMAGE}:${TAG}
       imagePullPolicy: Always
       command: [ "flask", "o365", "handle-incoming-email" ]
       envFrom:
