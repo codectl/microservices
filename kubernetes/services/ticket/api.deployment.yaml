@@ -35,7 +35,7 @@ spec:
         - name: registry-auth
       containers:
         - name: ticket-api
-          image: docker.io/rena2damas/ticket-manager:latest
+          image: ${IMAGE}:${TAG}
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
