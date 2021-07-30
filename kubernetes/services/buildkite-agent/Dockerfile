@@ -10,3 +10,6 @@ RUN echo "$(cat kubectl.sha256)  kubectl" | sha256sum -c
 RUN install -m 0755 kubectl /usr/local/bin/kubectl
 
 COPY src/hooks/ /buildkite-agent/hooks/
+
+ENTRYPOINT ["buildkite-agent"]
+CMD ["start"]
