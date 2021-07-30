@@ -7,7 +7,7 @@ metadata:
   labels:
     app: buildkite-agent
   annotations:
-    a8r.io/description: "Buildkite agent"
+    a8r.io/description: "Buildkite agent for kubernetes builds"
 
 spec:
   replicas: 1
