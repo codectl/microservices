@@ -11,5 +11,3 @@ RUN install -m 0755 kubectl /usr/local/bin/kubectl
 
 COPY src/hooks/ /buildkite-agent/hooks/
 
-ENTRYPOINT ["buildkite-agent"]
-CMD ["start"]
