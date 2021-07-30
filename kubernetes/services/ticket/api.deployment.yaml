@@ -32,7 +32,7 @@ spec:
         app: ticket-api
     spec:
       imagePullSecrets:
-        - name: registry-auth
+        - name: registry-credentials
       containers:
         - name: ticket-api
           image: ${IMAGE}:${TAG}

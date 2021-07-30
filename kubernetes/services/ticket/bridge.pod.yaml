@@ -12,7 +12,7 @@ metadata:
     a8r.io/owner: renatodamas
 spec:
   imagePullSecrets:
-    - name: registry-auth
+    - name: registry-credentials
   containers:
     - name: ticket-job
       image: ${IMAGE}:${TAG}

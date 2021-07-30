@@ -21,6 +21,8 @@ spec:
       labels:
         app: buildkite-agent
     spec:
+      imagePullSecrets:
+        - name: registry-credentials
       containers:
         - name: buildkite
           image: ${IMAGE}:${TAG}
