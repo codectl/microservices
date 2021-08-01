@@ -1,5 +1,7 @@
 FROM alpine AS base
 
+# apk does work well with https when behind proxy
+RUN sed -i 's/https/http/' /etc/apk/repositories
 RUN apk update
 RUN apk add --no-cache curl
 
