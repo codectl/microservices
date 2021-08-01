@@ -1,4 +1,7 @@
-FROM scratch AS base
+FROM alpine AS base
+
+RUN apk update
+RUN apk add curl
 
 WORKDIR /root/
 
