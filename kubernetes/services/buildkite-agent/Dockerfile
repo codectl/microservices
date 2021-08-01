@@ -1,7 +1,7 @@
 FROM alpine AS base
 
 RUN apk update
-RUN apk add curl
+RUN apk add --no-cache curl
 
 WORKDIR /root/
 
