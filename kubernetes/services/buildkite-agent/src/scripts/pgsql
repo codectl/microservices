@@ -57,8 +57,9 @@ function help {
 }
 
 # input function
+option=$1
+
 shift 1
-option=$0
 
 if [[ -z $option ]]; then
     help
