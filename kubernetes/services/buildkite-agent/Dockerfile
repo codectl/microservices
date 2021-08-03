@@ -26,4 +26,4 @@ RUN rm /tmp/kubectl
 
 COPY src/hooks/ hooks/
 COPY src/scripts/ scripts/
-RUN chmod -R 0755 scripts
+RUN chmod -R 0777 scripts
