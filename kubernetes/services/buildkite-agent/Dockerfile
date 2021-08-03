@@ -16,10 +16,13 @@ RUN echo "$(cat kubectl.sha256)  kubectl" | sha256sum -c
 # the Buildkite agent
 FROM buildkite/agent:3
 
+WORKDIR /buildkite-agent/
+
 COPY --from=base /root/kubectl /tmp/
 
 # Install kubectl
 RUN install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 RUN rm /tmp/kubectl
 
-COPY src/hooks/ /buildkite-agent/hooks/
+COPY src/hooks/ hooks/
+COPY src/scripts/ scripts/
