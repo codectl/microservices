@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eou pipefail
+
 psql_cmd=$(which psql)
 if [[ ! -x $psql_cmd ]]; then
     echo "Command psql not installed" 1>&2
