@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ticket-configs
+  name: ticket
   namespace: hpc-services
 data:
 

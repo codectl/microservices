@@ -35,12 +35,8 @@ spec:
           envFrom:
             - secretRef:
                 name: proxy
-          env:
-            - name: BUILDKITE_AGENT_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: buildkite-agent-token
-                  key: token
+            - secretRef:
+                name: buildkite-agent
           volumeMounts:
             - name: buildkite-builds
               mountPath: /buildkite/builds

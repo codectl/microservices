@@ -20,9 +20,9 @@ spec:
       command: [ "flask", "o365", "handle-incoming-email" ]
       envFrom:
         - configMapRef:
-            name: ticket-configs
+            name: ticket
         - secretRef:
-            name: ticket-secrets
+            name: ticket
       resources:
         limits:
           cpu: 100m

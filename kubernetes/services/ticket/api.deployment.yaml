@@ -39,9 +39,9 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: ticket-configs
+                name: ticket
             - secretRef:
-                name: ticket-secrets
+                name: ticket
           resources:
             limits:
               cpu: 1
