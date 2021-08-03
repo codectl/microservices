@@ -10,7 +10,7 @@ fi
 # Initiate database
 #
 function init {
-    createdb "$OPTIONS"
+    createdb "$PGDATABASE"
     psql -c "CREATE EXTENSION IF NOT EXISTS uuid-ossp;"
     psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
     psql -c "
