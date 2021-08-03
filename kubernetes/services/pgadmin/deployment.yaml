@@ -24,7 +24,7 @@ spec:
           - secretRef:
               name: proxy
           - configMapRef:
-              name: pgadmin-configs
+              name: pgadmin
         ports:
         - containerPort: 80
           name: http
