@@ -1,4 +1,4 @@
-FROM alpine AS base
+FROM alpine AS loader
 
 # apk does work well with https when behind proxy
 RUN sed -i 's/https/http/' /etc/apk/repositories
@@ -18,7 +18,7 @@ FROM buildkite/agent:3
 
 WORKDIR /buildkite-agent/
 
-COPY --from=base /root/kubectl /tmp/
+COPY --from=loader /root/kubectl /tmp/
 
 # Install kubectl
 RUN install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
@@ -26,3 +26,4 @@ RUN rm /tmp/kubectl
 
 COPY src/hooks/ hooks/
 COPY src/scripts/ scripts/
+RUN chmod -R 0755 scripts
