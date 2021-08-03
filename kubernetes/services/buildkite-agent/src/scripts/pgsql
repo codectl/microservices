@@ -12,7 +12,7 @@ fi
 # Initiate database
 #
 function init {
-    createdb "$PGDATABASE"
+    createdb "$DATABASE" 2> /dev/null || echo "database already exists"
     psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
     psql -c "
       CREATE TABLE IF NOT EXISTS tokens (
