@@ -1,13 +1,5 @@
 #!/bin/bash
 
-DATABASE="buildkite-agent"
-OPTIONS="
---host ${DATABASE_HOST} \
---username ${DATABASE_USER} \
---password ${DATABASE_PASSWORD}
---database ${DATABASE}
-"
-
 psql_cmd=$(which psql)
 if [[ ! -x $psql_cmd ]]; then
     echo "Command psql not installed" 1>&2
@@ -19,9 +11,9 @@ fi
 #
 function init {
     createdb "$OPTIONS"
-    psql "$OPTIONS" -c "CREATE EXTENSION IF NOT EXISTS uuid-ossp;"
-    psql "$OPTIONS" -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
-    psql "$OPTIONS" -c "
+    psql -c "CREATE EXTENSION IF NOT EXISTS uuid-ossp;"
+    psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+    psql -c "
       CREATE TABLE IF NOT EXISTS tokens (
         id uuid PRIMARY KEY DEFAULT uuid_generate_v4 (),
         username VARCHAR NOT NUL UNIQUE,
@@ -30,7 +22,7 @@ function init {
         bitbucket_token VARCHAR UNIQUE
       );
     "
-    psql "$OPTIONS" -c "
+    psql -c "
       CREATE OR REPLACE FUNCTION hash_update_tg()
       RETURNS trigger AS $$
         BEGIN
@@ -41,7 +33,7 @@ function init {
         END;
       $$ LANGUAGE plpgsql;
     "
-    psql "$OPTIONS" -c "
+    psql -c "
       CREATE TRIGGER secret_tokens_insert_update
       BEFORE INSERT OR UPDATE ON tokens
       FOR EACH ROW EXECUTE PROCEDURE hash_update_tg();
