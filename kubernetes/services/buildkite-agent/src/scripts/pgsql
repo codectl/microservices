@@ -43,10 +43,20 @@ function init {
     " 2> /dev/null || true
 }
 
-function load_tokens {
-  USER=$1
+#
+# Load user tokens to env
+#
+function env {
+  EMAIL=$1
 
-
+  select=$(psql -F "," -Atc "
+    SELECT email,
+      bitbucket_user,
+      PGP_SYM_DECRYPT(bitbucket_token::bytea, '$AES256_KEY'),
+      artifactory_user,
+      PGP_SYM_DECRYPT(artifactory_token::bytea, '$AES256_KEY')
+    FROM tokens WHERE email = '$EMAIL';
+  ")
 }
 
 #
@@ -70,6 +80,9 @@ fi
 case $option in
     init)
         init
+        ;;
+    env)
+        env $@
         ;;
     *)
         help
