@@ -88,8 +88,8 @@ case $option in
     init)
         init
         ;;
-    env)
-        env $@
+    setenv)
+        setenv $@
         ;;
     *)
         help
