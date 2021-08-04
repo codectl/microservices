@@ -20,10 +20,10 @@ function init {
     psql -qc "REVOKE connect ON DATABASE \"$PGDATABASE\" FROM PUBLIC;"
     psql -qc "
       CREATE TABLE IF NOT EXISTS tokens (
-        email               EMAIL PRIMARY KEY,
-        bitbucket_user      VARCHAR UNIQUE,
+        email               VARCHAR(50) PRIMARY KEY,
+        bitbucket_user      VARCHAR(50) UNIQUE,
         bitbucket_token     VARCHAR,
-        artifactory_user    VARCHAR UNIQUE,
+        artifactory_user    VARCHAR(50) UNIQUE,
         artifactory_token   VARCHAR
       );
     "
@@ -39,7 +39,7 @@ function init {
         END;
       \$\$ LANGUAGE plpgsql;
     "
-    psql -c "
+    psql -tc "
       CREATE TRIGGER secret_tokens_insert_update
       BEFORE INSERT OR UPDATE ON tokens
       FOR EACH ROW EXECUTE PROCEDURE hash_update_tg();
