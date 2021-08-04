@@ -17,6 +17,7 @@ export PGOPTIONS='--client-min-messages=warning'
 function init {
     createdb "$PGDATABASE" 2> /dev/null || true
     psql -qc "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+    psql -qc "REVOKE connect ON DATABASE $PGDATABASE FROM PUBLIC;"
     psql -qc "
       CREATE TABLE IF NOT EXISTS tokens (
         id                SERIAL PRIMARY KEY,
