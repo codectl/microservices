@@ -20,9 +20,11 @@ function init {
     psql -qc "REVOKE connect ON DATABASE \"$PGDATABASE\" FROM PUBLIC;"
     psql -qc "
       CREATE TABLE IF NOT EXISTS tokens (
-        email             EMAIL PRIMARY KEY,
-        bitbucket_user    VARCHAR UNIQUE,
-        bitbucket_token   VARCHAR
+        email               EMAIL PRIMARY KEY,
+        bitbucket_user      VARCHAR UNIQUE,
+        bitbucket_token     VARCHAR,
+        artifactory_user    VARCHAR UNIQUE,
+        artifactory_token   VARCHAR
       );
     "
     psql -qc "
@@ -31,6 +33,7 @@ function init {
         BEGIN
           IF (TG_OP = 'INSERT') OR (TG_OP = 'UPDATE') THEN
             NEW.bitbucket_token = PGP_SYM_ENCRYPT(NEW.bitbucket_token, '$AES256_KEY');
+            NEW.artifactory_token = PGP_SYM_ENCRYPT(NEW.artifactory_token, '$AES256_KEY');
             RETURN NEW;
           END IF;
         END;
