@@ -8,13 +8,16 @@ if [[ ! -x $psql_cmd ]]; then
     exit 1
 fi
 
+# Increase psql log to warning
+export PGOPTIONS='--client-min-messages=warning'
+
 #
 # Initiate database
 #
 function init {
     createdb "$PGDATABASE" 2> /dev/null || true
-    psql -tc "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
-    psql -tc "
+    psql -qc "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+    psql -qc "
       CREATE TABLE IF NOT EXISTS tokens (
         id                SERIAL PRIMARY KEY,
         username          VARCHAR NOT NULL UNIQUE,
@@ -23,7 +26,7 @@ function init {
         bitbucket_token   VARCHAR
       );
     "
-    psql -tc "
+    psql -qc "
       CREATE OR REPLACE FUNCTION hash_update_tg()
       RETURNS trigger AS \$\$
         BEGIN
