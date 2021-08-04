@@ -13,8 +13,8 @@ fi
 #
 function init {
     createdb "$PGDATABASE" 2> /dev/null || true
-    psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
-    psql -c "
+    psql -tc "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
+    psql -tc "
       CREATE TABLE IF NOT EXISTS tokens (
         id                SERIAL PRIMARY KEY,
         username          VARCHAR NOT NULL UNIQUE,
@@ -23,7 +23,7 @@ function init {
         bitbucket_token   VARCHAR
       );
     "
-    psql -c "
+    psql -tc "
       CREATE OR REPLACE FUNCTION hash_update_tg()
       RETURNS trigger AS \$\$
         BEGIN
