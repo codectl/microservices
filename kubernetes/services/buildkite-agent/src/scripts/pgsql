@@ -12,7 +12,7 @@ fi
 # Initiate database
 #
 function init {
-    createdb "$PGDATABASE" 2> /dev/null || echo "database already exists"
+    createdb "$PGDATABASE" 2> /dev/null || true
     psql -c "CREATE EXTENSION IF NOT EXISTS pgcrypto;"
     psql -c "
       CREATE TABLE IF NOT EXISTS tokens (
@@ -25,7 +25,7 @@ function init {
     "
     psql -c "
       CREATE OR REPLACE FUNCTION hash_update_tg()
-      RETURNS trigger AS $$
+      RETURNS trigger AS \$\$
         BEGIN
           IF tg_op = 'INSERT' OR tg_op = 'UPDATE' THEN
             NEW.bitbucket_token = PGP_SYM_ENCRYPT(NEW.bitbucket_token,’AES_KEY’); –digest(NEW.key_codes, ‘sha256’);
