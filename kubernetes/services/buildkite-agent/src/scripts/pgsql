@@ -28,7 +28,7 @@ function init {
       RETURNS trigger AS \$\$
         BEGIN
           IF tg_op = 'INSERT' OR tg_op = 'UPDATE' THEN
-            NEW.bitbucket_token = PGP_SYM_ENCRYPT(NEW.bitbucket_token, $AES256_KEY);
+            NEW.bitbucket_token = PGP_SYM_ENCRYPT(NEW.bitbucket_token, '$AES256_KEY');
             RETURN NEW;
           END IF;
         END;
@@ -38,7 +38,7 @@ function init {
       CREATE TRIGGER secret_tokens_insert_update
       BEFORE INSERT OR UPDATE ON tokens
       FOR EACH ROW EXECUTE PROCEDURE hash_update_tg();
-    "
+    " 2> /dev/null || true
 }
 
 #
