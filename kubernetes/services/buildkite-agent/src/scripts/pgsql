@@ -20,9 +20,7 @@ function init {
     psql -qc "REVOKE connect ON DATABASE \"$PGDATABASE\" FROM PUBLIC;"
     psql -qc "
       CREATE TABLE IF NOT EXISTS tokens (
-        id                SERIAL PRIMARY KEY,
-        username          VARCHAR NOT NULL UNIQUE,
-        email             VARCHAR NOT NULL UNIQUE,
+        email             EMAIL PRIMARY KEY,
         bitbucket_user    VARCHAR UNIQUE,
         bitbucket_token   VARCHAR
       );
@@ -43,6 +41,12 @@ function init {
       BEFORE INSERT OR UPDATE ON tokens
       FOR EACH ROW EXECUTE PROCEDURE hash_update_tg();
     " 2> /dev/null || true
+}
+
+function load_tokens {
+  USER=$1
+
+
 }
 
 #
