@@ -89,7 +89,7 @@ case $option in
         init
         ;;
     setenv)
-        setenv $@
+        setenv "$@"
         ;;
     *)
         help
