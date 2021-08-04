@@ -49,17 +49,21 @@ function init {
 #
 # Load user tokens to env
 #
-function env {
+function setenv {
   EMAIL=$1
 
-  select=$(psql -F "," -Atc "
+  read -d '' -ra select <<< "$(psql -F "," -Ac "
     SELECT email,
       bitbucket_user,
-      PGP_SYM_DECRYPT(bitbucket_token::bytea, '$AES256_KEY'),
+      PGP_SYM_DECRYPT(bitbucket_token::bytea, '$AES256_KEY') AS bitbucket_token,
       artifactory_user,
-      PGP_SYM_DECRYPT(artifactory_token::bytea, '$AES256_KEY')
+      PGP_SYM_DECRYPT(artifactory_token::bytea, '$AES256_KEY') AS artifactory_token
     FROM tokens WHERE email = '$EMAIL';
-  ")
+  " | head -2)"
+
+  IFS="," read -ra headers <<< "${select[0]}"
+  IFS="," read -ra row <<< "${select[1]}"
+
 }
 
 #
