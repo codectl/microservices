@@ -28,11 +28,11 @@ function init {
       RETURNS trigger AS \$\$
         BEGIN
           IF tg_op = 'INSERT' OR tg_op = 'UPDATE' THEN
-            NEW.bitbucket_token = PGP_SYM_ENCRYPT(NEW.bitbucket_token,’AES_KEY’); –digest(NEW.key_codes, ‘sha256’);
+            NEW.bitbucket_token = PGP_SYM_ENCRYPT(NEW.bitbucket_token,'AES_KEY');
             RETURN NEW;
           END IF;
         END;
-      $$ LANGUAGE plpgsql;
+      \$\$ LANGUAGE plpgsql;
     "
     psql -c "
       CREATE TRIGGER secret_tokens_insert_update
