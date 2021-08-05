@@ -8,9 +8,6 @@ if [[ ! -x $psql_cmd ]]; then
     exit 1
 fi
 
-# Increase psql log to warning
-export PGOPTIONS='--client-min-messages=warning'
-
 #
 # Initiate database
 #
