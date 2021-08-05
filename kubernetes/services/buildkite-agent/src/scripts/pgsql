@@ -76,7 +76,7 @@ option=$1
 
 shift 1
 
-if [[ ! -v $option ]]; then
+if [[ -z $option ]]; then
     help
     exit 1
 fi
