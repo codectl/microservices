@@ -13,7 +13,7 @@ RUN curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/st
 RUN curl -L "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256" -o kubectl.sha256
 RUN echo "$(cat kubectl.sha256)  kubectl" | sha256sum -c
 
-# the Buildkite agent
+# extend Buildkite agent
 FROM buildkite/agent:3
 
 # install dependencies
@@ -28,9 +28,12 @@ COPY --from=loader /root/kubectl /tmp/
 RUN install -m 0755 /tmp/kubectl /usr/local/bin/kubectl
 RUN rm /tmp/kubectl
 
+# setup hooks
 COPY src/hooks/ hooks/
 COPY src/scripts/ scripts/
 RUN chmod -R 0777 scripts
+
+ENV BUILDKITE_HOOKS_PATH /buildkite-agent/hooks
 
 # initialize database conenction
 RUN scripts/pgsql init
