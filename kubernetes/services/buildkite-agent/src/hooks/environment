@@ -4,11 +4,12 @@ set -euo pipefail
 
 echo "--- :warning: Validate user permissions"
 if [[ -v ALLOWED_BUILDKITE_TEAM ]]; then
-
-  if [[ ":$BUILDKITE_CREATORS_TEAMS:" != *":$ALLOWED_BUILDKITE_TEAM:"* ]]; then
-    echo ":no_entry: Setting up user environment"
+  if [[ "$BUILDKITE_CREATORS_TEAMS" != *"$ALLOWED_BUILDKITE_TEAM"* ]]; then
+    echo ":no_entry: Team '$ALLOWED_BUILDKITE_TEAM' is not allowed to run the pipeline in this agent"
     exit 1
   fi
+else
+  echo ":no_entry: Variable 'ALLOWED_BUILDKITE_TEAM' is unset"
 fi
 
 echo "--- :house_with_garden: Setting up user environment"
