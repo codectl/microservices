@@ -50,12 +50,12 @@ function setenv {
   EMAIL=$1
 
   # ensure user exists
-  if [[ -z "$(psql -tc "SELECT 1 FROM tokens WHERE email = '$EMAIL';")" ]]; then
+  if [[ -z "$(psql -tc "FROM tokens WHERE email = '$EMAIL';")" ]]; then
     echo "User '$EMAIL' does not exist"
     exit 1
   fi
 
-  read -d '' -ra select <<< "$(psql -F "," -Ac "
+  readarray -t select <<< "$(psql -F "," -Ac "
     SELECT email,
       bitbucket_user,
       PGP_SYM_DECRYPT(bitbucket_token::bytea, '$AES256_KEY') AS bitbucket_token,
