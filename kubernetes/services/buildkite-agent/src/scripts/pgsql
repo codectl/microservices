@@ -50,7 +50,7 @@ function setenv {
   EMAIL=$1
 
   # ensure user exists
-  if [[ -z "$(psql -tc "FROM tokens WHERE email = '$EMAIL';")" ]]; then
+  if [[ -z "$(psql -tc "SELECT 1 FROM tokens WHERE email = '$EMAIL';")" ]]; then
     echo "User '$EMAIL' does not exist"
     exit 1
   fi
