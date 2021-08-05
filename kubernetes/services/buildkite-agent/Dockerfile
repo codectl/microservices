@@ -31,6 +31,7 @@ RUN rm /tmp/kubectl
 # setup hooks
 COPY src/hooks/ hooks/
 COPY src/scripts/ scripts/
+RUN chmod -R 0755 hooks/
 RUN install -m 0755 scripts/pgsql /usr/local/bin/pgsql
 
 ENV BUILDKITE_HOOKS_PATH /buildkite-agent/hooks
