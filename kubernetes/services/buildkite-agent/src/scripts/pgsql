@@ -49,6 +49,7 @@ function init {
 function setenv {
   EMAIL=$1
 
+  # ensure user exists
   if [[ -z "$(psql -tc "FROM tokens WHERE email = '$EMAIL';")" ]]; then
     echo "User '$EMAIL' does not exist"
     exit 1
@@ -63,6 +64,7 @@ function setenv {
     FROM tokens WHERE email = '$EMAIL';
   " | head -2)"
 
+  # export secrets as environment variables
   IFS="," read -ra headers <<< "${select[0]}"
   IFS="," read -ra row <<< "${select[1]}"
   for i in "${!headers[@]}"; do export "$(echo "${headers[$i]}" | tr "[:lower:]" "[:upper:]")"="${row[$i]}"; done
