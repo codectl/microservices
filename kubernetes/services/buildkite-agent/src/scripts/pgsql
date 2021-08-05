@@ -49,6 +49,11 @@ function init {
 function setenv {
   EMAIL=$1
 
+  if [[ -z "$(psql -tc "FROM tokens WHERE email = '$EMAIL';")" ]]; then
+    echo "User '$EMAIL' does not exist"
+    exit 1
+  fi
+
   read -d '' -ra select <<< "$(psql -F "," -Ac "
     SELECT email,
       bitbucket_user,
