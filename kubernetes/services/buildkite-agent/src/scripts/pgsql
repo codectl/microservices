@@ -67,7 +67,7 @@ function setenv {
   # export secrets as environment variables
   IFS="," read -ra headers <<< "${select[0]}"
   IFS="," read -ra row <<< "${select[1]}"
-  for i in "${!headers[@]}"; do export "$(echo "${headers[$i]}" | tr "[:lower:]" "[:upper:]")"="${row[$i]}"; done
+  for i in "${!headers[@]}"; do export "$(echo "${headers[$i]}" | tr "[:lower:]" "[:upper:]")"="${row[$i]:-}"; done
 }
 
 #
