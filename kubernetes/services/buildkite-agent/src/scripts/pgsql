@@ -79,7 +79,7 @@ option=$1
 
 shift 1
 
-if [[ -z $option ]]; then
+if [[ ! -v $option ]]; then
     help
     exit 1
 fi
