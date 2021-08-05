@@ -12,9 +12,9 @@ else
   echo ":no_entry: Variable 'ALLOWED_BUILDKITE_TEAM' is unset"
 fi
 
-scripts/pgsql setenv "$BUILDKITE_BUILD_CREATOR_EMAIL"
+pgsql setenv "$BUILDKITE_BUILD_CREATOR_EMAIL"
 if [[ $? ]]; then
-    echo ":no_entry: User '$BUILDKITE_BUILD_CREATOR_EMAIL' is not allowed to run the pipeline in this agent"
+  echo ":no_entry: User '$BUILDKITE_BUILD_CREATOR_EMAIL' is not allowed to run the pipeline in this agent"
 fi
 
 echo "--- :white_check_mark: User access granted"
