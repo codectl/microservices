@@ -31,3 +31,6 @@ RUN rm /tmp/kubectl
 COPY src/hooks/ hooks/
 COPY src/scripts/ scripts/
 RUN chmod -R 0777 scripts
+
+# initialize database conenction
+RUN scripts/pgsql init

@@ -2,5 +2,14 @@
 
 set -euo pipefail
 
-echo "--- :database: Setup internal configurations"
-./scripts/psql init
+echo "--- :warning: Validate user permissions"
+if [[ -v ALLOWED_BUILDKITE_TEAM ]]; then
+
+  if [[ ":$BUILDKITE_CREATORS_TEAMS:" != *":$ALLOWED_BUILDKITE_TEAM:"* ]]; then
+    echo ":no_entry: Setting up user environment"
+    exit 1
+  fi
+fi
+
+echo "--- :house_with_garden: Setting up user environment"
+scripts/pgsql setenv "$BUILDKITE_BUILD_CREATOR_EMAIL"
