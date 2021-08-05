@@ -14,3 +14,6 @@ fi
 
 echo "--- :house_with_garden: Setting up user environment"
 scripts/pgsql setenv "$BUILDKITE_BUILD_CREATOR_EMAIL"
+if [[ $? ]]; then
+    echo ":no_entry: User '$BUILDKITE_BUILD_CREATOR_EMAIL' is not allowed to run the pipeline in this agent"
+fi
