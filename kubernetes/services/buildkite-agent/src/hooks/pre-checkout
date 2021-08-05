@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Hook that runs before checkout event
-
-set -euo pipefail
