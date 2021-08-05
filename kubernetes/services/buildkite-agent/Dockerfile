@@ -35,5 +35,5 @@ RUN chmod -R 0777 scripts
 
 ENV BUILDKITE_HOOKS_PATH /buildkite-agent/hooks
 
-# initialize database conenction
+# setup database for agent
 RUN scripts/pgsql init
