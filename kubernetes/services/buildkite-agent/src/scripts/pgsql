@@ -2,7 +2,7 @@
 
 set -eou pipefail
 
-if [[ ! -x $(which psql) ]] || true; then
+if [[ ! -x $(which psql) ]]; then
     echo "Command psql not installed" 1>&2
     exit 1
 fi
