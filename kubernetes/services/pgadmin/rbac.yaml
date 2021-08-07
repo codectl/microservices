@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: sa-pgadmin-role
+  name: pgadmin
   namespace: hpc-services
 rules:
   - apiGroups: [ policy ]
@@ -13,12 +13,12 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: sa-pgadmin-role-binding
+  name: pgadmin
   namespace: hpc-services
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: sa-pgadmin-role
+  name: pgadmin
 subjects:
   - kind: ServiceAccount
     name: sa-pgadmin

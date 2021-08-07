@@ -2,7 +2,7 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: pgadmin-psp
+  name: pgadmin
   annotations:
     kubernetes.io/description: 'psp for pgadmin pod'
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
