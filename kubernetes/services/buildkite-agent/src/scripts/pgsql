@@ -7,6 +7,11 @@ if [[ ! -x $(which psql) ]]; then
     exit 1
 fi
 
+if [[ ! $(pg_isready) ]]; then
+    echo "Connection to server failed" 1>&2
+    exit 1
+fi
+
 #
 # Initiate database
 #

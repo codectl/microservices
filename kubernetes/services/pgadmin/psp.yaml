@@ -26,10 +26,10 @@ spec:
   runAsUser: # require the container to run without root privileges
     rule: MustRunAsNonRoot
   runAsGroup: # forbid adding the root group
+    rule: MustRunAs
     ranges:
       - min: 1000
         max: 65535
-    rule: MustRunAs
   supplementalGroups: # forbid adding the root group
     rule: MustRunAs
     ranges:

@@ -1,0 +1,5 @@
+---
+namespace: privileged-buildkite-agent
+resources:
+  - ns.yaml
+  - psp.yaml
