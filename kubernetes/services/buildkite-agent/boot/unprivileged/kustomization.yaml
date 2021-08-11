@@ -7,5 +7,7 @@ resources:
   - sa.yaml
   - secrets.yaml
   - deployment.yaml
+  - ../common
 patchesStrategicMerge:
+  - deployment.yaml
   - secrets.yaml
