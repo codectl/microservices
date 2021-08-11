@@ -4,8 +4,6 @@ kind: Kustomization
 resources:
   - ns.yaml
   - psp.yaml
-  - secrets.yaml
   - ../common
 patchesStrategicMerge:
-  - deployment.yaml
   - secrets.yaml
