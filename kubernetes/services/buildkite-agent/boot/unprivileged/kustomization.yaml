@@ -8,3 +8,4 @@ resources:
   - ../common
 patchesStrategicMerge:
   - secrets.yaml
+  - deployment.yaml

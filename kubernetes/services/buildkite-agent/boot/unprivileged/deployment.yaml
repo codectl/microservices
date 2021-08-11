@@ -1,0 +1,12 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+spec:
+  template:
+  containers:
+    - name: buildkite
+      args:
+        - start
+        - --name=%hostname
+        - --tags=env=kubernetes
+        - --tags=privileged=false
