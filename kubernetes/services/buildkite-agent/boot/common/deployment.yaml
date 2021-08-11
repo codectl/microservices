@@ -30,7 +30,6 @@ spec:
             - start
             - --name=%hostname
             - --tags=env=kubernetes
-            - --tags=agent=kaniko
           envFrom:
             - secretRef:
                 name: proxy
