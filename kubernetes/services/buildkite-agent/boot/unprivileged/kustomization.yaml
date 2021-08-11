@@ -1,0 +1,7 @@
+---
+resources:
+  - ns.yaml
+  - psp.yaml
+  - secrets.yaml
+patchesStrategicMerge:
+  - secrets.yaml
