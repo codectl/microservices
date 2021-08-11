@@ -3,4 +3,6 @@ namespace: privileged-buildkite-agent
 resources:
   - ns.yaml
   - psp.yaml
+  - sa.yaml
   - secrets.yaml
+  - deployment.yaml
