@@ -1,5 +1,6 @@
 ---
 resources:
+  - ns.yaml
   - psp.yaml
   - sa.yaml
   - secrets.yaml
