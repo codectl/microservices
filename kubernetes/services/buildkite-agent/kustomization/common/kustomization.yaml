@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - secrets.yaml
   - sa.yaml
-  - rbac.yaml
   - deployment.yaml
 images:
   - name: buildkite-agent
