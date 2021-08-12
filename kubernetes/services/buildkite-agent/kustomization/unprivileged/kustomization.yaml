@@ -5,8 +5,8 @@ namespace: services
 resources:
   - ns.yaml
   - psp.yaml
+  - rbac.yaml
   - ../common
 patchesStrategicMerge:
   - secrets.yaml
-  - rbac.yaml
   - deployment.yaml

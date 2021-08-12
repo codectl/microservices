@@ -5,7 +5,7 @@ namespace: privileged-buildkite-agent
 resources:
   - ns.yaml
   - psp.yaml
+  - rbac.yaml
   - ../common
 patchesStrategicMerge:
-  - rbac.yaml
   - deployment.yaml
