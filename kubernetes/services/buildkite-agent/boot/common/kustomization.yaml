@@ -6,6 +6,6 @@ resources:
   - secrets.yaml
   - deployment.yaml
 images:
-  - name: ticket-service
+  - name: buildkite-agent
     newName: ...
     newTag: latest
