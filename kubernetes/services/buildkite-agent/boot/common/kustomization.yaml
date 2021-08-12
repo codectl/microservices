@@ -5,3 +5,7 @@ resources:
   - sa.yaml
   - secrets.yaml
   - deployment.yaml
+images:
+  - name: ticket-service
+    newName: ...
+    newTag: latest

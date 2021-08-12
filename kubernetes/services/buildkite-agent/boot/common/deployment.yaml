@@ -24,7 +24,7 @@ spec:
         - name: registry-credentials
       containers:
         - name: buildkite
-          image: ${IMAGE}:${TAG}
+          image: "ticket-service:latest"
           imagePullPolicy: Always
           args:
             - start
