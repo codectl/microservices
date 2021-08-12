@@ -12,4 +12,5 @@ spec:
             - start
             - --name=%hostname
             - --tags=env=kubernetes
+            - --tags=namespace=services
             - --tags=privileged=false

@@ -12,5 +12,6 @@ spec:
             - start
             - --name=%hostname
             - --tags=env=kubernetes
+            - --tags=namespace=buildkite-agent
             - --tags=privileged=true
             - --kaniko=true
