@@ -7,4 +7,5 @@ resources:
   - psp.yaml
   - ../common
 patchesStrategicMerge:
+  - rbac.yaml
   - deployment.yaml
