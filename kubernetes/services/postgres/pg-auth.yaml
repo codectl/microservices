@@ -5,6 +5,8 @@ type: Opaque
 metadata:
   name: ha-postgres-auth
   namespace: hpc-services
+  annotations:
+    a8r.io/description: "Credentials for postgres superuser"
 stringData:
   POSTGRES_USER: ...
   POSTGRES_PASSWORD: ...
