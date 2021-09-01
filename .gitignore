@@ -17,3 +17,9 @@ env/
 
 # Logs
 *.log*
+
+# O365 auth
+o365_token.txt
+
+# exclude hidden kustomization files.
+.kustomization/**/.*.yaml
