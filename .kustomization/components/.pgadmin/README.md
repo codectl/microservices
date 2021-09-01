@@ -13,7 +13,3 @@ Component not currently under usage, therefore, not supported.
 
 Because of an issue with ingress, the application is only accessible via ```NodePort```. Therefore, it is accessible
 on ```http://<node url>:<node port>/pgadmin4```.
-
-## License
-
-[GPLv3](LICENSE) license
