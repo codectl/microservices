@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: services
 
 resources:
+  - ns.yaml
   - ../../base/
   - sealed-secrets/
 
