@@ -2,8 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: sa-postgres-role
-  namespace: hpc-services
+  name: ha-postgres
 rules:
   - apiGroups: [ policy ]
     resources: [ podsecuritypolicies ]
@@ -29,13 +28,11 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: sa-postgres-role-binding
-  namespace: hpc-services
+  name: ha-postgres
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: sa-postgres-role
+  name: ha-postgres
 subjects:
   - kind: ServiceAccount
-    name: sa-postgres
-    namespace: hpc-services
+    name: ha-postgres

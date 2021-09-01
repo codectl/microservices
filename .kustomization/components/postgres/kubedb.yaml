@@ -3,7 +3,6 @@ apiVersion: kubedb.com/v1alpha2
 kind: Postgres
 metadata:
   name: ha-postgres
-  namespace: hpc-services
 
 spec:
 
@@ -15,7 +14,7 @@ spec:
 
   # postgres admin credentials
   authSecret:
-    name: ha-postgres-auth
+    name: ha-postgres
 
   # pvc parameters
   storageType: Durable
@@ -35,7 +34,7 @@ spec:
       annotations:
         a8r.io/documentation: "https://kubedb.com/docs/v2021.06.23/guides/postgres"
     spec:
-      serviceAccountName: sa-postgres
+      serviceAccountName: ha-postgres
       resources:
         requests:
           memory: 64Mi

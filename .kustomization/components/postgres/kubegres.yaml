@@ -2,8 +2,7 @@
 apiVersion: kubegres.reactive-tech.io/v1
 kind: Kubegres
 metadata:
-  name: postgres
-  namespace: hpc-services
+  name: ha-postgres
 
 spec:
 
