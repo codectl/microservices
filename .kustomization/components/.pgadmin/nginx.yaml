@@ -2,14 +2,12 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: sa-pgadmin-nginx
-  namespace: hpc-services
+  name: pgadmin-nginx
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: pgadmin-nginx-conf
-  namespace: hpc-services
+  name: pgadmin-nginx
 data:
   nginx.conf: |
     user nginx;
@@ -36,7 +34,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pgadmin-nginx
-  namespace: hpc-services
 spec:
   selector:
     matchLabels:
@@ -57,7 +54,7 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
               readOnly: true
-      serviceAccountName: sa-pgadmin-nginx
+      serviceAccountName: pgadmin-nginx
       volumes:
         - name: pgadmin-nginx-conf
           configMap:
@@ -70,7 +67,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pgadmin-nginx
-  namespace: hpc-services
   labels:
     run: pgadmin-nginx
 spec:

@@ -3,7 +3,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pgadmin
-  namespace: hpc-services
 data:
   PGADMIN_DEFAULT_EMAIL: admin@domain.com
   PGADMIN_DEFAULT_PASSWORD: admin
