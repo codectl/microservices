@@ -6,7 +6,7 @@ namespace: services
 resources:
   - ns.yaml
   - ../../base/
-  - sealed-secrets/
+  - secrets/sealed/
 
 components:
   - ../../components/postgres/
