@@ -5,8 +5,8 @@ metadata:
   name: kubedb-postgres
   annotations:
     kubernetes.io/description: 'psp for postgresql pod running under KubeDB operator'
-    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
-    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'docker/default'
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'runtime/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName: 'runtime/default'
 spec:
   privileged: false # prevent creation of privileged Pods
 
