@@ -45,8 +45,8 @@ Unfortunately there is no better way to go about this than to execute the follow
 ENV="dev"
 basedir="$(pwd)/.kustomization"
 cd "${basedir}/overlays/${ENV}/"
-kustomize build .secrets | yq e 'select(.metadata.name=="'proxy'")' - | kubeseal > sealed-secrets/proxy.yaml 
-kustomize build .secrets | yq e 'select(.metadata.name=="'ha-postgres'")' - | kubeseal > sealed-secrets/postgres.yaml 
+kustomize build secrets/ | yq e 'select(.metadata.name=="'proxy'")' - | kubeseal > secrets/sealed/proxy.yaml 
+kustomize build secrets/ | yq e 'select(.metadata.name=="'ha-postgres'")' - | kubeseal > secrets/sealed/postgres.yaml 
 )
 ```
 
