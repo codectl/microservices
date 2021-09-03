@@ -26,7 +26,7 @@ install & use, visit its documentation [here](https://github.com/bitnami-labs/se
 The idea is then converting regular ```kubernetes``` secrets into sealed secrets. Regular secrets are hidden files,
 like ```.secrets.yaml``` and, in **no** circumstance, should they be committed to git repository. A rule
 in ```.gitignore``` should prevent it from happening and is present for that reason. Sealed secrets are not hidden
-files, like ```sealed.yaml``` and is safe to store in the repository.
+files, like ```sealed.yaml``` and are safe to store in the repository.
 
 Since ```kustomize``` is managing all the different project resources - secrets included -, a combination
 of ```kustomize``` and ```kubeseal``` is needed for this process.
@@ -34,11 +34,11 @@ of ```kustomize``` and ```kubeseal``` is needed for this process.
 Starting off by running the command below:
 
 ```bash
-$ kustomize build .kustomization/overlays/dev/.secrets/
+$ kustomize build .kustomization/overlays/dev/secrets/
 ```
 
-This produces a compilation of all the secrets needed in the project, and which need to be sealed individually.
-Unfortunately there is no better way to go about this than to execute the following sequence:
+This produces a compilation of all the secrets needed in the project, and which need to be sealed individually, if there
+are more than a single one. Unfortunately there is no better way to go about this than to execute the following:
 
 ```bash
 (
@@ -50,7 +50,7 @@ kustomize build secrets/ | yq e 'select(.metadata.name=="'ha-postgres'")' - | ku
 )
 ```
 
-As a result, all the secrets are now sealed under ```sealed-secrets```, and they can now safely be shared and stored
+As a result, all the secrets are now sealed under ```secrets/sealed/```, and they can now safely be shared and stored
 with no risk of compromising sensitive information.
 
 ## Usage
