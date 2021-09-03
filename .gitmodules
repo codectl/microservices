@@ -1,3 +1,6 @@
 [submodule "ticket-service"]
 	path = .kustomization/components/ticket-service
 	url = git@github.com:rena2damas/ticket-service.git
+[submodule "buildkite-agent"]
+	path = .kustomization/components/buildkite-agent
+	url = git@github.com:rena2damas/buildkite-agent.git
