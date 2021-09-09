@@ -43,7 +43,7 @@ spec:
           memory: 512Mi
           cpu: 500m
 
-  serviceTemplates:
+  serviceTemplate:
     - alias: primary
       metadata:
         annotations:
