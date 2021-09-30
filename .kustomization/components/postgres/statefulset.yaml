@@ -6,7 +6,7 @@ metadata:
   labels:
     app: postgres
   annotations:
-    a8r.io/description: "Postgres database"
+    a8r.io/description: " A postgres database"
     a8r.io/owner: renatodamas
 
 spec:
