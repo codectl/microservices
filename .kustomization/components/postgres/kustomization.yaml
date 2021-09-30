@@ -6,4 +6,6 @@ resources:
   - psp.yaml
   - sa.yaml
   - rbac.yaml
+  - pvc.yaml
   - statefulset.yaml
+  - svc.yaml
