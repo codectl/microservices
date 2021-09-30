@@ -6,4 +6,4 @@ resources:
   - psp.yaml
   - sa.yaml
   - rbac.yaml
-  - kubedb.yaml
+  - statefulset.yaml

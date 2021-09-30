@@ -2,47 +2,44 @@
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: kubedb-postgres
+  name: postgres
   annotations:
-    kubernetes.io/description: 'psp for postgresql pod running under KubeDB operator'
+    kubernetes.io/description: 'psp for postgres database'
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'runtime/default'
     seccomp.security.alpha.kubernetes.io/defaultProfileName: 'runtime/default'
 spec:
-  privileged: false # prevent creation of privileged Pods
+  privileged: false
+  allowPrivilegeEscalation: false
 
-  allowPrivilegeEscalation: false # prevent setuid binaries (like sudo)
+  allowedCapabilities: [ ]
+  requiredDropCapabilities: [ ALL ]
+  defaultAddCapabilities: [ ]
 
-  allowedCapabilities: # capabilities that container is allowed to request
-    - IPC_LOCK
-    - SYS_RESOURCE
-  requiredDropCapabilities: [ ]      # disable capabilities by default
-  defaultAddCapabilities: [ ]        # no capabilities are added by default
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
 
-  hostNetwork: false    # disallow host networking
-  hostIPC: false        # disallow sharing the IPC hostname
-  hostPID: false        # disallow sharing the host process ID namespace
-
-  seLinux: # harness for SELinux
+  seLinux:
     rule: RunAsAny
 
-  runAsUser: # require the container to run without root privileges
+  runAsUser:
     rule: MustRunAsNonRoot
-  runAsGroup: # forbid adding the root group
+  runAsGroup:
     rule: MustRunAs
     ranges:
-      - min: 1
+      - min: 1000
         max: 65535
-  supplementalGroups: # forbid adding the root group
+  supplementalGroups:
     rule: MustRunAs
     ranges:
-      - min: 1
+      - min: 1000
         max: 65535
-  fsGroup: # forbid adding the root group
+  fsGroup:
     rule: MustRunAs
     ranges:
-      - min: 1
+      - min: 1000
         max: 65535
-  volumes: # allow only these volume types
+  volumes:
     - persistentVolumeClaim
     - emptyDir
     - secret

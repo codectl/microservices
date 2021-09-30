@@ -2,37 +2,21 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: ha-postgres
+  name: postgres
 rules:
   - apiGroups: [ policy ]
     resources: [ podsecuritypolicies ]
     verbs: [ use ]
-    resourceNames: [ kubedb-postgres ]
-  - apiGroups: [ apps ]
-    resources: [ statefulsets ]
-    resourceNames: [ ha-postgres ]
-    verbs: [ get ]
-  - apiGroups: [ "" ]
-    resources: [ pods ]
-    verbs: [ get, list, patch, delete ]
-  - apiGroups: [ "" ]
-    resources: [ pods/exec ]
-    verbs: [ create ]
-  - apiGroups: [ "" ]
-    resources: [ secrets ]
-    verbs: [ get, list ]
-  - apiGroups: [ "" ]
-    resources: [ configmaps ]
-    verbs: [ create, get, update ]
+    resourceNames: [ postgres ]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: ha-postgres
+  name: postgres
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: ha-postgres
+  name: postgres
 subjects:
   - kind: ServiceAccount
-    name: ha-postgres
+    name: postgres

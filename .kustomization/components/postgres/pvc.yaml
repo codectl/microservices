@@ -1,0 +1,13 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres-data
+  annotations:
+    volume.beta.kubernetes.io/storage-class: default
+spec:
+  storageClassName: default
+  accessModes: [ ReadWriteOnce ]
+  resources:
+    requests:
+      storage: 2Gi
