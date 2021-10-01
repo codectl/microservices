@@ -25,9 +25,9 @@ spec:
           imagePullPolicy: IfNotPresent
           envFrom:
             - secretRef:
-              name: proxy
+                name: proxy
             - secretRef:
-              name: postgres
+                name: postgres
           env:
             - name: PGDATA
               value: /var/lib/pgsql/data
