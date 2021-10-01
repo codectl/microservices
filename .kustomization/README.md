@@ -46,7 +46,7 @@ ENV="dev"
 basedir="$(pwd)/.kustomization"
 cd "${basedir}/overlays/${ENV}/"
 kustomize build secrets/ | yq e 'select(.metadata.name=="'proxy'")' - | kubeseal > secrets/sealed/proxy.yaml 
-kustomize build secrets/ | yq e 'select(.metadata.name=="'ha-postgres'")' - | kubeseal > secrets/sealed/postgres.yaml 
+kustomize build secrets/ | yq e 'select(.metadata.name=="'postgres'")' - | kubeseal > secrets/sealed/postgres.yaml 
 )
 ```
 
