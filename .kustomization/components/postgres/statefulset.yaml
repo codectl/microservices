@@ -30,12 +30,12 @@ spec:
               name: postgres
           env:
             - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
+              value: /var/lib/pgsql/data
           ports:
             - containerPort: 5432
           volumeMounts:
             - name: pgdata
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/pgsql/data
           resources:
             requests:
               memory: 256Mi
