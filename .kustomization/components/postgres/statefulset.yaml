@@ -13,6 +13,7 @@ spec:
   selector:
     matchLabels:
       app: postgres
+  serviceName: postgres
   replicas: 1
   template:
     metadata:
@@ -23,6 +24,9 @@ spec:
         - name: postgres
           image: postgres:latest
           imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+              name: postgres
           envFrom:
             - secretRef:
                 name: proxy
@@ -31,8 +35,6 @@ spec:
           env:
             - name: PGDATA
               value: /var/lib/pgsql/data
-          ports:
-            - containerPort: 5432
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/pgsql/data
@@ -48,7 +50,14 @@ spec:
             runAsGroup: 1000
       serviceAccountName: postgres
       restartPolicy: Always
-      volumes:
-        - name: pgdata
-          persistentVolumeClaim:
-            claimName: postgres-data
+  volumeClaimTemplates:
+    - metadata:
+        name: pgdata
+        annotations:
+          volume.beta.kubernetes.io/storage-class: default
+      spec:
+        storageClassName: default
+        accessModes: [ ReadWriteOnce ]
+        resources:
+          requests:
+            storage: 5Gi
