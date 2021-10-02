@@ -11,8 +11,8 @@ spec:
   privileged: false
   allowPrivilegeEscalation: false
 
-  allowedCapabilities: [ CHOWN ]
-  requiredDropCapabilities: [ ]
+  allowedCapabilities: [ ]
+  requiredDropCapabilities: [ ALL ]
   defaultAddCapabilities: [ ]
 
   hostNetwork: false
@@ -23,14 +23,11 @@ spec:
     rule: RunAsAny
 
   runAsUser:
-    rule: MustRunAs
-    ranges:
-      - min: 0
-        max: 65535
+    rule: MustRunAsNonRoot
   runAsGroup:
     rule: MustRunAs
     ranges:
-      - min: 0
+      - min: 1000
         max: 65535
   supplementalGroups:
     rule: MustRunAs
