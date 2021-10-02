@@ -12,7 +12,7 @@ spec:
   allowPrivilegeEscalation: false
 
   allowedCapabilities:
-    - CHMOD
+    - CAP_FOWNER
   requiredDropCapabilities: [ ]
   defaultAddCapabilities: [ ]
 
