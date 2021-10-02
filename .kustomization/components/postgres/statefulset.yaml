@@ -27,8 +27,8 @@ spec:
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
-          capabilities:
-            add: [ CHOWN ]
+            capabilities:
+              add: [ CHOWN ]
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/pgsql/data
