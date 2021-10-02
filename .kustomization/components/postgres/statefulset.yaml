@@ -23,7 +23,7 @@ spec:
       initContainers:
         - name: chmod-pgdata
           image: postgres:latest
-          command: [ /bin/chown, -R, 1000, /var/lib/pgsql/data ]
+          command: [ "/bin/chown", "-R", "1000", "/var/lib/pgsql/data" ]
           volumeMounts:
             - name: pgdata
               mountPath: /var/lib/pgsql/data
