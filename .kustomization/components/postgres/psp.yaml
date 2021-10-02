@@ -12,7 +12,7 @@ spec:
   allowPrivilegeEscalation: false
 
   allowedCapabilities:
-    - CAP_FOWNER
+    - FOWNER
   requiredDropCapabilities: [ ]
   defaultAddCapabilities: [ ]
 
