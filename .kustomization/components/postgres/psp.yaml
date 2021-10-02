@@ -27,15 +27,9 @@ spec:
   runAsGroup:
     rule: RunAsAny
   supplementalGroups:
-    rule: MustRunAs
-    ranges:
-      - min: 1000
-        max: 65535
+    rule: RunAsAny
   fsGroup:
-    rule: MustRunAs
-    ranges:
-      - min: 999
-        max: 65535
+    rule: RunAsAny
   volumes:
     - persistentVolumeClaim
     - emptyDir
