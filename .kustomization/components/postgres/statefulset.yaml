@@ -20,19 +20,6 @@ spec:
       labels:
         app: postgres
     spec:
-      initContainers:
-        - name: chmod-pgdata
-          image: postgres:latest
-          command: [ "chown", "-R", "1000", "/var/lib/pgsql/data" ]
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            capabilities:
-              add: [ CHOWN ]
-          volumeMounts:
-            - name: pgdata
-              mountPath: /var/lib/pgsql/data
-              readOnly: false
       containers:
         - name: postgres
           image: postgres:latest
@@ -60,8 +47,8 @@ spec:
               memory: 512Mi
               cpu: 500m
           securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
+            runAsUser: 0
+            runAsGroup: 0
       serviceAccountName: postgres
       restartPolicy: Always
   volumeClaimTemplates:
