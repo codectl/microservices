@@ -23,12 +23,9 @@ spec:
     rule: RunAsAny
 
   runAsUser:
-    rule: MustRunAsNonRoot
+    rule: RunAsAny
   runAsGroup:
-    rule: MustRunAs
-    ranges:
-      - min: 1000
-        max: 65535
+    rule: RunAsAny
   supplementalGroups:
     rule: MustRunAs
     ranges:
@@ -37,7 +34,7 @@ spec:
   fsGroup:
     rule: MustRunAs
     ranges:
-      - min: 1000
+      - min: 999
         max: 65535
   volumes:
     - persistentVolumeClaim
