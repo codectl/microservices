@@ -11,9 +11,8 @@ spec:
   privileged: false
   allowPrivilegeEscalation: false
 
-  allowedCapabilities:
-    - FOWNER
-  requiredDropCapabilities: [ ]
+  allowedCapabilities: [ ]
+  requiredDropCapabilities: [ ALL ]
   defaultAddCapabilities: [ ]
 
   hostNetwork: false

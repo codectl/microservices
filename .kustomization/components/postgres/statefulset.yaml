@@ -20,6 +20,13 @@ spec:
       labels:
         app: postgres
     spec:
+      initContainers:
+        - name: chmod-pgdata
+          image: postgres:latest
+          command: [ /bin/chown, -R, 1000, /var/lib/pgsql/data ]
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/pgsql/data
       containers:
         - name: postgres
           image: postgres:latest
@@ -48,8 +55,6 @@ spec:
           securityContext:
             runAsUser: 1000
             runAsGroup: 1000
-            capabilities:
-              add: [ FOWNER ]
       serviceAccountName: postgres
       restartPolicy: Always
   volumeClaimTemplates:
