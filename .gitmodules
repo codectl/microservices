@@ -4,3 +4,6 @@
 [submodule "ticket-service"]
 	path = .kustomization/components/ticket-service
 	url = git@github.com:rena2damas/ticket-service.git
+[submodule "portal-service"]
+	path = .kustomization/components/portal-service
+	url = git@github.com:rena2damas/portal-service.git
