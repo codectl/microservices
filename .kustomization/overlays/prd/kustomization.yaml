@@ -7,6 +7,9 @@ resources:
   - ns.yaml
   - ../../base/
   - secrets/sealed/
+  - ../../components/buildkite-agent/.kustomization/overlays/prd/
+  - ../../components/portal-service/.kustomization/overlays/prd/
+  - ../../components/ticket-service/.kustomization/overlays/prd/
 
 components:
   - ../../components/postgres/
